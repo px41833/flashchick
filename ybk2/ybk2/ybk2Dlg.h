@@ -32,5 +32,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnCbnSelchangeCombo1();
-	CComboBox m_editAddend;
+	
+	afx_msg void OnBnClickedButtonLogin();
 };

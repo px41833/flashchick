@@ -57,14 +57,15 @@ Cybk2Dlg::Cybk2Dlg(CWnd* pParent /*=NULL*/)
 void Cybk2Dlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_COMBO1, m_editAddend);
+	
 }
 
 BEGIN_MESSAGE_MAP(Cybk2Dlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_CBN_SELCHANGE(IDC_COMBO1, &Cybk2Dlg::OnCbnSelchangeCombo1)
+	
+	ON_BN_CLICKED(IDC_BUTTON_LOGIN, &Cybk2Dlg::OnBnClickedButtonLogin)
 END_MESSAGE_MAP()
 
 
@@ -158,4 +159,11 @@ HCURSOR Cybk2Dlg::OnQueryDragIcon()
 void Cybk2Dlg::OnCbnSelchangeCombo1()
 {
 	// TODO: 在此添加控件通知处理程序代码
+}
+
+
+void Cybk2Dlg::OnBnClickedButtonLogin()
+{
+	// TODO: 在此添加控件通知处理程序代码
+
 }

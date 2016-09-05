@@ -1,29 +1,27 @@
-﻿生成启动时间为 2016/9/3 15:26:09。
-     1>项目“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\tinyxml_lib.vcxproj”在节点 2 上(rebuild 个目标)。
-     1>_PrepareForClean:
-         正在删除文件“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxml.lastbuildstate”。
-       InitializeBuildStatus:
-         正在创建“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxml.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+﻿生成启动时间为 2016/9/5 21:16:48。
+     1>项目“D:\ybk\devlop\tinyxml\tinyxml_lib.vcxproj”在节点 3 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxml.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
-         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\\" /Fd"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\vc100.pdb" /FR"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\\" /Gd /TP /analyze- /errorReport:prompt tinystr.cpp tinyxml.cpp tinyxmlerror.cpp tinyxmlparser.cpp
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"D:\ybk\devlop\tinyxml\Debugtinyxml\\" /Fd"D:\ybk\devlop\tinyxml\Debugtinyxml\vc100.pdb" /FR"D:\ybk\devlop\tinyxml\Debugtinyxml\\" /Gd /TP /analyze- /errorReport:prompt tinystr.cpp tinyxml.cpp tinyxmlerror.cpp tinyxmlparser.cpp
          tinyxmlparser.cpp
          tinyxmlerror.cpp
          tinyxml.cpp
          tinystr.cpp
          正在生成代码...
        Lib:
-         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxml.lib" /NOLOGO "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinystr.obj"
-         "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxml.obj"
-         "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxmlerror.obj"
-         "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxmlparser.obj"
-         tinyxml_lib.vcxproj -> C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxml.lib
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxml.lib" /NOLOGO D:\ybk\devlop\tinyxml\Debugtinyxml\tinystr.obj
+         D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxml.obj
+         D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxmlerror.obj
+         D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxmlparser.obj
+         tinyxml_lib.vcxproj -> D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxml.lib
        BscMake:
-         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\bscmake.exe /nologo /o"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxml.bsc" "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinystr.sbr" "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxml.sbr" "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxmlerror.sbr" "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxmlparser.sbr"
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\bscmake.exe /nologo /o"D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxml.bsc" D:\ybk\devlop\tinyxml\Debugtinyxml\tinystr.sbr D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxml.sbr D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxmlerror.sbr D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxmlparser.sbr
        FinalizeBuildStatus:
-         正在删除文件“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxml.unsuccessfulbuild”。
-         正在对“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\Debugtinyxml\tinyxml.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\tinyxml_lib.vcxproj”(rebuild 个目标)的操作。
+         正在删除文件“D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxml.unsuccessfulbuild”。
+         正在对“D:\ybk\devlop\tinyxml\Debugtinyxml\tinyxml.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\ybk\devlop\tinyxml\tinyxml_lib.vcxproj”(build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:00.97
+已用时间 00:00:07.21
