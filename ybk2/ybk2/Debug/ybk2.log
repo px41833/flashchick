@@ -1,0 +1,42 @@
+﻿生成启动时间为 2016/9/5 12:16:02。
+     1>项目“C:\Users\pangxin\Desktop\others\交易\ybk\ybk2\ybk2\ybk2.vcxproj”在节点 2 上(rebuild 个目标)。
+     1>_PrepareForClean:
+         正在删除文件“Debug\ybk2.lastbuildstate”。
+       InitializeBuildStatus:
+         正在创建“Debug\ybk2.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\ybk2.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ybk2.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ybk2.cpp ybk2Dlg.cpp
+         ybk2Dlg.cpp
+         ybk2.cpp
+         正在生成代码...
+       ResourceCompile:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0804" /IDebug\ /nologo /fo"Debug\ybk2.res" ybk2.rc 
+       ManifestResourceCompile:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\ybk2.exe.embed.manifest.res" Debug\ybk2_manifest.rc 
+       Link:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\pangxin\Desktop\others\交易\ybk\tinyxml\Debug\ybk2.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\ybk2.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\pangxin\Desktop\others\交易\ybk\tinyxml\Debug\ybk2.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\pangxin\Desktop\others\交易\ybk\tinyxml\Debug\ybk2.lib" /MACHINE:X86 Debug\ybk2.res
+         Debug\ybk2.exe.embed.manifest.res
+         Debug\stdafx.obj
+         Debug\ybk2.obj
+         Debug\ybk2Dlg.obj
+       Manifest:
+         正在删除文件“Debug\ybk2.exe.embed.manifest”。
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\ybk2.exe.embed.manifest" /manifest Debug\ybk2.exe.intermediate.manifest "D:\Program Files\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\ybk2.exe.embed.manifest.res" Debug\ybk2_manifest.rc 
+       LinkEmbedManifest:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\pangxin\Desktop\others\交易\ybk\tinyxml\Debug\ybk2.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\ybk2.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\pangxin\Desktop\others\交易\ybk\tinyxml\Debug\ybk2.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\pangxin\Desktop\others\交易\ybk\tinyxml\Debug\ybk2.lib" /MACHINE:X86 Debug\ybk2.res
+         Debug\ybk2.exe.embed.manifest.res
+         Debug\stdafx.obj
+         Debug\ybk2.obj
+         Debug\ybk2Dlg.obj
+         ybk2.vcxproj -> C:\Users\pangxin\Desktop\others\交易\ybk\tinyxml\Debug\ybk2.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\ybk2.unsuccessfulbuild”。
+         正在对“Debug\ybk2.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\pangxin\Desktop\others\交易\ybk\ybk2\ybk2\ybk2.vcxproj”(rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:10.83
