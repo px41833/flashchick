@@ -1,0 +1,24 @@
+﻿生成启动时间为 2016/9/3 15:59:42。
+     1>项目“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\tinyXmlTestSTL.vcxproj”在节点 3 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D TIXML_USE_STL /D TUNE /D _CRT_SECURE_NO_WARNINGS /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\\" /Fd"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\vc100.pdb" /FR"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\\" /Gd /TP /analyze- /errorReport:prompt xmltest.cpp
+         xmltest.cpp
+       Link:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.lib" /MACHINE:X86 "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\xmltest.obj"
+         "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlSTL.lib"
+     1>xmltest.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/INCREMENTAL:NO”规范)
+         tinyXmlTestSTL.vcxproj -> C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.exe
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.exe;#1" /manifest "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.exe.intermediate.manifest"
+       BscMake:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\bscmake.exe /nologo /o"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.bsc" "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\xmltest.sbr"
+       FinalizeBuildStatus:
+         正在删除文件“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.unsuccessfulbuild”。
+         正在对“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyXmlTestSTL\tinyXmlTestSTL.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\tinyXmlTestSTL.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:12.56

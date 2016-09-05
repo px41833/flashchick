@@ -1,0 +1,27 @@
+﻿生成启动时间为 2016/9/3 15:01:17。
+     1>项目“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\tinyxmlSTL.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlSTL.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D TIXML_USE_STL /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\\" /Fd"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\vc100.pdb" /FR"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\\" /Gd /TP /analyze- /errorReport:prompt tinystr.cpp tinyxml.cpp tinyxmlerror.cpp tinyxmlparser.cpp
+         tinyxmlparser.cpp
+         tinyxmlerror.cpp
+         tinyxml.cpp
+         tinystr.cpp
+         正在生成代码...
+       Lib:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlSTL.lib" /NOLOGO "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinystr.obj"
+         "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxml.obj"
+         "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlerror.obj"
+         "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlparser.obj"
+         tinyxmlSTL.vcxproj -> C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlSTL.lib
+       BscMake:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\bscmake.exe /nologo /o"C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlSTL.bsc" "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinystr.sbr" "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxml.sbr" "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlerror.sbr" "C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlparser.sbr"
+       FinalizeBuildStatus:
+         正在删除文件“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlSTL.unsuccessfulbuild”。
+         正在对“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\DebugtinyxmlSTL\tinyxmlSTL.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\pangxin\Desktop\others\交易\抓包\tinyxml\tinyxmlSTL.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:05.86
