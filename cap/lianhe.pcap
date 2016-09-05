@@ -1,0 +1,353 @@
+POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 504
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="user_login"><IC>75565576538030909605977552696675684001026321333661871670489258151768081177231623287103563115188126838140008019145331668103649300214557391582684081698792549342761713430760193042573205155636978549075458303327329482208807956238330419777913188849529501435771988745416154034069495007523724665199415149104578812650</IC><PASSWORD>418331101</PASSWORD><RANDOM_KEY></RANDOM_KEY><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 370
+Date: Mon, 29 Aug 2016 03:13:11 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="user_login"><RESULT><MODULE_ID>18</MODULE_ID><LAST_TIME>2016-08-29 11:13:01</LAST_TIME><LAST_IP>218.17.14.179</LAST_IP><CHG_PWD>0</CHG_PWD><NAME>803300000010212</NAME><RANDOM_KEY>2016082911134213380330000001021212977.58598824148</RANDOM_KEY><RETCODE>6073613125249857711</RETCODE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 161
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="firm_info"><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 496
+Date: Mon, 29 Aug 2016 03:13:11 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="firm_info"><RESULT><FI>803300000010212</FI><FN>....</FN><TP>-1</TP><IF>10.93</IF><IN_F>0</IN_F><OU_F>0</OU_F><HK_S>0</HK_S><IC>0</IC><UC>0</UC><HK_B>0</HK_B><OR_F>0</OR_F><OT_F>0</OT_F><IS>0</IS><FEE>0</FEE><BC_R>0</BC_R><BC_U>0</BC_U><BC_C>0</BC_C><BC_D>0</BC_D><SAF>0</SAF><OC>0.00</OC><MV>315.97</MV><SG_F>0</SG_F><UF>10.93</UF><DQ>10.93</DQ><JYSQY>326.90</JYSQY><RETCODE>0</RETCODE><MESSAGE></MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 183
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="query_commodity"><COMMODITY_ID /><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Transfer-Encoding: chunked
+Date: Mon, 29 Aug 2016 03:13:12 GMT
+
+2000
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="query_commodity"><RESULTLIST><REC><CO_I>000001</CO_I><CO_N>..........................</CO_N><L_SET>2026-06-24</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>5280.01</SP_U><SP_D>4320.01</SP_D><PR_C>4800.01</PR_C><FE_A>1</FE_A><TE_T>0.2</TE_T><SCE>0.2</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>500001</CO_I><CO_N>80..................</CO_N><L_SET>2020-06-17</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>2.73</SP_U><SP_D>2.23</SP_D><PR_C>2.48</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>500002</CO_I><CO_N>80..................</CO_N><L_SET>2020-06-17</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>2.56</SP_U><SP_D>2.1</SP_D><PR_C>2.33</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>500003</CO_I><CO_N>81..................</CO_N><L_SET>2026-08-19</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>4.48</SP_U><SP_D>3.66</SP_D><PR_C>4.07</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>500005</CO_I><CO_N>1966....................</CO_N><L_SET>2026-08-26</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>1.57</SP_U><SP_D>1.29</SP_D><PR_C>1.43</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600001</CO_I><CO_N>..........</CO_N><L_SET>2026-04-13</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>149.04</SP_U><SP_D>121.94</SP_D><PR_C>135.49</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600002</CO_I><CO_N>..................</CO_N><L_SET>2026-04-13</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>707.33</SP_U><SP_D>578.73</SP_D><PR_C>643.03</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600003</CO_I><CO_N>................</CO_N><L_SET>2026-04-13</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>53.97</SP_U><SP_D>44.15</SP_D><PR_C>49.06</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600005</CO_I><CO_N>......................</CO_N><L_SET>2026-04-13</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>2014.49</SP_U><SP_D>1648.21</SP_D><PR_C>1831.35</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600006</CO_I><CO_N>......2..............</CO_N><L_SET>2026-04-13</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>74.89</SP_U><SP_D>61.27</SP_D><PR_C>68.08</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600007</CO_I><CO_N>....................</CO_N><L_SET>2026-04-13</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>51.56</SP_U><SP_D>42.18</SP_D><PR_C>46.87</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600008</CO_I><CO_N>..................</CO_N><L_SET>2026-04-21</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>1385.79</SP_U><SP_D>1133.83</SP_D><PR_C>1259.81</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600009</CO_I><CO_N>............-........</CO_N><L_SET>2026-04-21</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>112.32</SP_U><SP_D>91.9</SP_D><PR_C>102.11</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600010</CO_I><CO_N>..............................</CO_N><L_SET>2026-04-21</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>80.94</SP_U><SP_D>66.22</SP_D><PR_C>73.58</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600011</CO_I><CO_N>................</CO_N><L_SET>2026-04-21</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>163.54</SP_U><SP_D>133.8</SP_D><PR_C>148.67</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600012</CO_I><CO_N>........</CO_N><L_SET>2026-04-21</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>223.69</SP_U><SP_D>183.01</SP_D><PR_C>203.35</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600013</CO_I><CO_N>..........</CO_N><L_SET>2026-04-21</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>56.5</SP_U><SP_D>46.22</SP_D><PR_C>51.36</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600015</CO_I><CO_N>....-..................</CO_N><L_SET>2026-04-21</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>91.92</SP_U><SP_D>75.2</SP_D><PR_C>83.56</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600016</CO_I><CO_N>............</CO_N><L_SET>2026-04-21</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>57.27</SP_U><SP_D>46.85</SP_D><PR_C>52.06</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600017</CO_I><CO_N>..........</CO_N><L_SET>2026-06-08</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>3811.06</SP_U><SP_D>3118.14</SP_D><PR_C>3464.6</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600018</CO_I><CO_N>................</CO_N><L_SET>2026-06-08</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>157.19</SP_U><SP_D>128.61</SP_D><PR_C>142.9</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600019</CO_I><CO_N>........-1........</CO_N><L_SET>2026-06-17</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>924.89</SP_U><SP_D>756.73</SP_D><PR_C>840.81</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600020</CO_I><CO_N>......................</CO_N><L_SET>2026-06-24</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>120.73</SP_U><SP_D>98.77</SP_D><PR_C>109.75</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600021</CO_I><CO_N>........70..........</CO_N><L_SET>2026-07-08</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>176.0</SP_U><SP_D>144.0</SP_D><PR_C>160.0</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600022</CO_I><CO_N>........</CO_N><L_SET>2026-07-15</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>115.93</SP_U><SP_D>94.85</SP_D><PR_C>105.39</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600023</CO_I><CO_N>........</CO_N><L_SET>2026-07-22</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>209.21</SP_U><SP_D>171.17</SP_D><PR_C>190.19</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600025</CO_I><CO_N>....</CO_N><L_SET>2026-07-22</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>469.56</SP_U><SP_D>384.18</SP_D><PR_C>426.87</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0<
+c2d
+/BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600026</CO_I><CO_N>..........................</CO_N><L_SET>2026-08-05</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>148.7</SP_U><SP_D>121.66</SP_D><PR_C>135.18</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600027</CO_I><CO_N>................</CO_N><L_SET>2026-07-15</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>157.71</SP_U><SP_D>129.03</SP_D><PR_C>143.37</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600028</CO_I><CO_N>........</CO_N><L_SET>2026-07-22</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>3813.7</SP_U><SP_D>3120.3</SP_D><PR_C>3467.0</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600029</CO_I><CO_N>..........</CO_N><L_SET>2026-08-12</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>49.35</SP_U><SP_D>40.37</SP_D><PR_C>44.86</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600030</CO_I><CO_N>........</CO_N><L_SET>2026-08-19</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>35.66</SP_U><SP_D>29.18</SP_D><PR_C>32.42</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600033</CO_I><CO_N>........</CO_N><L_SET>2026-08-12</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>56.72</SP_U><SP_D>46.4</SP_D><PR_C>51.56</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600035</CO_I><CO_N>......................</CO_N><L_SET>2026-08-19</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>523.89</SP_U><SP_D>428.63</SP_D><PR_C>476.26</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600036</CO_I><CO_N>..........</CO_N><L_SET>2026-08-19</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>36.25</SP_U><SP_D>29.65</SP_D><PR_C>32.95</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>600039</CO_I><CO_N>........</CO_N><L_SET>2026-08-26</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>23.6</SP_U><SP_D>19.3</SP_D><PR_C>21.45</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC><REC><CO_I>900001</CO_I><CO_N>................</CO_N><L_SET>2026-07-27</L_SET><STA>0</STA><CT_S>1</CT_S><SPREAD>0.01</SPREAD><SP_U>324.21</SP_U><SP_D>265.27</SP_D><PR_C>294.74</PR_C><FE_A>1</FE_A><TE_T>0.1</TE_T><SCE>0.1</SCE><SFE_A>1</SFE_A><BRF>0.0</BRF><BURF>0.0</BURF><QTY>0</QTY><IFR>0</IFR></REC></RESULTLIST><RESULT><TTLREC>37</TTLREC><RETCODE>0</RETCODE><MESSAGE></MESSAGE></RESULT></REP></MEBS_MOBILE>
+0
+
+POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 203
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="sys_time_query"><CU_LG>1</CU_LG><LAST_ID /><S_I>6073613125249857711</S_I><TD_CNT /><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 271
+Date: Mon, 29 Aug 2016 03:13:13 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="sys_time_query"><RESULT><CU_T>11:13:35</CU_T><CU_D>2016-08-29</CU_D><TV_U>1472440415261</TV_U><NEW_T>0</NEW_T><TD_TTL>0</TD_TTL><DAY>29</DAY><RETCODE>0</RETCODE><MESSAGE></MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 203
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="sys_time_query"><CU_LG>1</CU_LG><LAST_ID /><S_I>6073613125249857711</S_I><TD_CNT /><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 271
+Date: Mon, 29 Aug 2016 03:13:13 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="sys_time_query"><RESULT><CU_T>11:13:35</CU_T><CU_D>2016-08-29</CU_D><TV_U>1472440415322</TV_U><NEW_T>0</NEW_T><TD_TTL>0</TD_TTL><DAY>29</DAY><RETCODE>0</RETCODE><MESSAGE></MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 203
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="sys_time_query"><CU_LG>1</CU_LG><LAST_ID /><S_I>6073613125249857711</S_I><TD_CNT /><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 271
+Date: Mon, 29 Aug 2016 03:13:18 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="sys_time_query"><RESULT><CU_T>11:13:40</CU_T><CU_D>2016-08-29</CU_D><TV_U>1472440420375</TV_U><NEW_T>0</NEW_T><TD_TTL>0</TD_TTL><DAY>29</DAY><RETCODE>0</RETCODE><MESSAGE></MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 203
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="sys_time_query"><CU_LG>1</CU_LG><LAST_ID /><S_I>6073613125249857711</S_I><TD_CNT /><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 271
+Date: Mon, 29 Aug 2016 03:13:23 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="sys_time_query"><RESULT><CU_T>11:13:45</CU_T><CU_D>2016-08-29</CU_D><TV_U>1472440425431</TV_U><NEW_T>0</NEW_T><TD_TTL>0</TD_TTL><DAY>29</DAY><RETCODE>0</RETCODE><MESSAGE></MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 203
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="sys_time_query"><CU_LG>1</CU_LG><LAST_ID /><S_I>6073613125249857711</S_I><TD_CNT /><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 271
+Date: Mon, 29 Aug 2016 03:13:28 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="sys_time_query"><RESULT><CU_T>11:13:51</CU_T><CU_D>2016-08-29</CU_D><TV_U>1472440431279</TV_U><NEW_T>0</NEW_T><TD_TTL>0</TD_TTL><DAY>29</DAY><RETCODE>0</RETCODE><MESSAGE></MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 203
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="sys_time_query"><CU_LG>1</CU_LG><LAST_ID /><S_I>6073613125249857711</S_I><TD_CNT /><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 271
+Date: Mon, 29 Aug 2016 03:13:33 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="sys_time_query"><RESULT><CU_T>11:13:56</CU_T><CU_D>2016-08-29</CU_D><TV_U>1472440436368</TV_U><NEW_T>0</NEW_T><TD_TTL>0</TD_TTL><DAY>29</DAY><RETCODE>0</RETCODE><MESSAGE></MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 203
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="sys_time_query"><CU_LG>1</CU_LG><LAST_ID /><S_I>6073613125249857711</S_I><TD_CNT /><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 271
+Date: Mon, 29 Aug 2016 03:13:40 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="sys_time_query"><RESULT><CU_T>11:14:02</CU_T><CU_D>2016-08-29</CU_D><TV_U>1472440442200</TV_U><NEW_T>0</NEW_T><TD_TTL>0</TD_TTL><DAY>29</DAY><RETCODE>0</RETCODE><MESSAGE></MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 203
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="sys_time_query"><CU_LG>1</CU_LG><LAST_ID /><S_I>6073613125249857711</S_I><TD_CNT /><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 271
+Date: Mon, 29 Aug 2016 03:13:45 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="sys_time_query"><RESULT><CU_T>11:14:07</CU_T><CU_D>2016-08-29</CU_D><TV_U>1472440447255</TV_U><NEW_T>0</NEW_T><TD_TTL>0</TD_TTL><DAY>29</DAY><RETCODE>0</RETCODE><MESSAGE></MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:48 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:48 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:48 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:48 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:48 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:48 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:48 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:49 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:49 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:49 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:49 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:49 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:49 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:49 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:49 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:49 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:49 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:50 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:50 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Length: 178
+Date: Mon, 29 Aug 2016 03:13:50 GMT
+
+<?xml version="1.0" encoding = "GBK"?><MEBS_MOBILE><REP name="order_submit"><RESULT><RETCODE>-1615</RETCODE><MESSAGE>......................</MESSAGE></RESULT></REP></MEBS_MOBILE>POST /Issue4ariesMobileServer/communicateServlet HTTP/1.1
+Host: 221.12.156.123:16918
+Accept-Encoding: identity
+Content-Length: 255
+
+<?xml version='1.0' encoding='GBK' standalone='yes' ?><MEBS_MOBILE><REQ name="order_submit"><BUY_SELL>1</BUY_SELL><COMMODITY_ID>000001</COMMODITY_ID><PRICE>5280.01</PRICE><QTY>2</QTY><S_I>6073613125249857711</S_I><U>803300000010212</U></REQ></MEBS_MOBILE>
