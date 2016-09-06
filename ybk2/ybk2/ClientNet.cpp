@@ -3,7 +3,7 @@ CLientNet.cpp
 */
 #include "stdafx.h"
 #include "ClientNet.h"
-
+#include "tinyxml.h"
 
 int CClientNet::Connect( int port,const char* address )
 {
@@ -79,4 +79,36 @@ int CClientNet::SendMsg(const char* msg,int len)
 void CClientNet::Close()
 {
 	closesocket(m_sock);
+}
+int CClientNet::httplogin(int accout,int passwds)
+{
+	 //初始化发送信息
+    char send_str[2048] = {0};
+	char api[]="http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet";
+	char hostname[]="123.59.182.105:16915";
+
+    //头信息
+    strcat(send_str, "POST ");
+    strcat(send_str, api);
+    strcat(send_str, " HTTP/1.1\r\n");
+    strcat(send_str, "Host: ");
+    strcat(send_str, hostname);
+    strcat(send_str, "\r\n");
+	strcat(send_str, "Accept-Encoding:identity\r\n");
+
+	char content_header[100];
+    //sprintf(content_header,"Content-Length: %d\r\n", strlen(parameters));
+	const char* demoStart =
+		"<?xml version=\"1.0\"  standalone='no' >\n"
+		"<!-- Our to do list data -->"
+		"<ToDo>\n"
+		"<!-- Do I need a secure PDA? -->\n"
+		"<Item priority=\"1\" distance='close'> Go to the <bold>Toy store!</bold></Item>"
+		"<Item priority=\"2\" distance='none'> Do bills   </Item>"
+		"<Item priority=\"2\" distance='far &amp; back'> Look for Evil Dinosaurs! </Item>"
+		"</ToDo>";
+	TiXmlDocument doc( "pxtest.xml" );
+			doc.Parse( demoStart );
+
+	return 0;
 }

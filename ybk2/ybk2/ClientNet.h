@@ -19,6 +19,9 @@ public:
 	int SendMsg(const char* msg,int len);
 	//¹Ø±Õ
 	void Close();
+public:
+	int httplogin(int accout,int passwds);
+
 
 private:
 	SOCKET m_sock;

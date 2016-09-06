@@ -169,6 +169,7 @@ void ThreadFunc(LPVOID lpParameter)
 	Cybk2Dlg *ybkdlg= (Cybk2Dlg *)lpParameter;
 	CClientNet *pfconnect=new CClientNet();
 	pfconnect->Connect(23,"172.20.1.73");
+	pfconnect->httplogin(ybkdlg->GetDlgItemInt(IDC_EDIT_ACCOUT,NULL,TRUE),ybkdlg->GetDlgItemInt(IDC_EDIT_MIMA,NULL,TRUE));
 	int m_bRun=TRUE;
 	while(m_bRun)
 	{
@@ -185,7 +186,7 @@ void Cybk2Dlg::OnBnClickedButtonLogin()
 	CString passwd;
 	GetDlgItemText(IDC_EDIT_ACCOUT, accout);
 	GetDlgItemText(IDC_EDIT_MIMA, passwd);
-	SetDlgItemText(IDC_EDIT_YU_E, accout);
+	//SetDlgItemText(IDC_EDIT_YU_E, accout);
 	
 	DWORD ThreadID;
 	hThread=CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFunc,this,0,&ThreadID);
