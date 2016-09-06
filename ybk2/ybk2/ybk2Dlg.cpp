@@ -6,6 +6,7 @@
 #include "ybk2.h"
 #include "ybk2Dlg.h"
 #include "afxdialogex.h"
+#include "ClientNet.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -161,9 +162,32 @@ void Cybk2Dlg::OnCbnSelchangeCombo1()
 	// TODO: 在此添加控件通知处理程序代码
 }
 
-
+void ThreadFunc(LPVOID lpParameter)
+{
+	CTime time;
+	CString strTime;
+	Cybk2Dlg *ybkdlg= (Cybk2Dlg *)lpParameter;
+	CClientNet *pfconnect=new CClientNet();
+	pfconnect->Connect(23,"172.20.1.73");
+	int m_bRun=TRUE;
+	while(m_bRun)
+	{
+		time=CTime::GetCurrentTime();
+		strTime=time.Format("%H:%M:%S");
+		ybkdlg->SetDlgItemText(IDC_EDIT_YU_E, strTime);
+		Sleep(1000);
+	}
+}
 void Cybk2Dlg::OnBnClickedButtonLogin()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	CString accout;
+	CString passwd;
+	GetDlgItemText(IDC_EDIT_ACCOUT, accout);
+	GetDlgItemText(IDC_EDIT_MIMA, passwd);
+	SetDlgItemText(IDC_EDIT_YU_E, accout);
+	
+	DWORD ThreadID;
+	hThread=CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFunc,this,0,&ThreadID);
 
 }

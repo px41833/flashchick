@@ -22,7 +22,7 @@ int CClientNet::Connect( int port,const char* address )
 		rlt = 1;
 		return rlt;
 	}
-
+	TRACE("~~~~~~~~~~~~~\n");
 	//´´½¨Socket
 	m_sock = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
 	if (m_sock == INVALID_SOCKET)

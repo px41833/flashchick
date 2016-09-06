@@ -34,4 +34,7 @@ public:
 	afx_msg void OnCbnSelchangeCombo1();
 	
 	afx_msg void OnBnClickedButtonLogin();
+
+	HANDLE hThread;
+	//void  ThreadFunc();
 };
