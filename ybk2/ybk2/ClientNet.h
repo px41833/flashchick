@@ -17,10 +17,14 @@ public:
 	int Connect(int port,const char* address);
 	//发送信息
 	int SendMsg(const char* msg,int len);
+
+	int RecvMsg(char *msg,int len);
+	void ProcXmlDate(char *);
+    int RepCode;  //登录成功后返回的随机码
 	//关闭
 	void Close();
 public:
-	int httplogin(int accout,int passwds);
+	int HttpLogin(int accout,int passwds);
 
 
 private:

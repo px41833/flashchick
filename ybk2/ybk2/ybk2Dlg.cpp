@@ -168,16 +168,19 @@ void ThreadFunc(LPVOID lpParameter)
 	CString strTime;
 	Cybk2Dlg *ybkdlg= (Cybk2Dlg *)lpParameter;
 	CClientNet *pfconnect=new CClientNet();
-	pfconnect->Connect(23,"172.20.1.73");
-	pfconnect->httplogin(ybkdlg->GetDlgItemInt(IDC_EDIT_ACCOUT,NULL,TRUE),ybkdlg->GetDlgItemInt(IDC_EDIT_MIMA,NULL,TRUE));
+	pfconnect->Connect(16915,"123.59.182.105");
+	pfconnect->HttpLogin(ybkdlg->GetDlgItemInt(IDC_EDIT_ACCOUT,NULL,TRUE),ybkdlg->GetDlgItemInt(IDC_EDIT_MIMA,NULL,TRUE));
+	char recdata[2048]={0};
+	pfconnect->RecvMsg(recdata,2048);
+	AfxMessageBox(recdata);
 	int m_bRun=TRUE;
-	while(m_bRun)
+	/*while(m_bRun)
 	{
 		time=CTime::GetCurrentTime();
 		strTime=time.Format("%H:%M:%S");
 		ybkdlg->SetDlgItemText(IDC_EDIT_YU_E, strTime);
 		Sleep(1000);
-	}
+	}*/
 }
 void Cybk2Dlg::OnBnClickedButtonLogin()
 {

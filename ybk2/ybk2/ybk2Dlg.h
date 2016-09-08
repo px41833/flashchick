@@ -36,5 +36,6 @@ public:
 	afx_msg void OnBnClickedButtonLogin();
 
 	HANDLE hThread;
+		fd_set fdrecv;
 	//void  ThreadFunc();
 };

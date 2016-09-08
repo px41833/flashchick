@@ -20,7 +20,7 @@ class Cybk2App : public CWinApp
 public:
 	Cybk2App();
 
-	
+
 // ÖØÐ´
 public:
 	virtual BOOL InitInstance();
