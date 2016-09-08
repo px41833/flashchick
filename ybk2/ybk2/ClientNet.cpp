@@ -193,4 +193,10 @@ int CClientNet::HttpLogin(int accout,int passwds)
 
 	return 0;
 }
-void CClientNet::Close()
+void CClientNet::ProcXmlDate(char *s)
+{
+	//此处接收的数据有HTTP头需要去掉
+	char *xmldata=strchr(s,'<');
+
+	AfxMessageBox(xmldata);
+}

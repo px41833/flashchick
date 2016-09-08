@@ -172,7 +172,11 @@ void ThreadFunc(LPVOID lpParameter)
 	pfconnect->HttpLogin(ybkdlg->GetDlgItemInt(IDC_EDIT_ACCOUT,NULL,TRUE),ybkdlg->GetDlgItemInt(IDC_EDIT_MIMA,NULL,TRUE));
 	char recdata[2048]={0};
 	pfconnect->RecvMsg(recdata,2048);
-	AfxMessageBox(recdata);
+	//AfxMessageBox(recdata);
+	if(strlen(recdata)>0)
+	{
+	pfconnect->ProcXmlDate(recdata);
+	}
 	int m_bRun=TRUE;
 	/*while(m_bRun)
 	{

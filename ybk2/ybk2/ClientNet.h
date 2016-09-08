@@ -19,8 +19,10 @@ public:
 	int SendMsg(const char* msg,int len);
 
 	int RecvMsg(char *msg,int len);
-	void ProcXmlDate(char *);
+	void ProcXmlDate(char *s);
     int RepCode;  //登录成功后返回的随机码
+	int RetYuE;//此账号内的余额
+
 	//关闭
 	void Close();
 public:
