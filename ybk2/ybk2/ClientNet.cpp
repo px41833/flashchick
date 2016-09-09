@@ -197,6 +197,20 @@ void CClientNet::ProcXmlDate(char *s)
 {
 	//此处接收的数据有HTTP头需要去掉
 	char *xmldata=strchr(s,'<');
+	TiXmlDocument doc;
+	doc.Parse(xmldata);
+	TiXmlElement* databaseElement = 0;  
+	TiXmlElement* listElement = 0;
+	TiXmlElement* channelElement = 0;
+	TiXmlHandle docHandle(&doc);
+	databaseElement = docHandle.FirstChild( "GNNT" ).FirstChild( "REP" ).ToElement();
+	assert( databaseElement  ); 
+	const char *name = databaseElement->Attribute("name");  
+	 TRACE("name:%s",name);
 
-	AfxMessageBox(xmldata);
+	 TiXmlHandle docHandle1 = docHandle.FirstChild( "GNNT" ).FirstChild( "REP" ).FirstChild("RESULT");
+	databaseElement= docHandle1.FirstChildElement("RETCODE").ToElement();
+	//char *port = {0};  
+	 const char *por=databaseElement->GetText();
+	AfxMessageBox(por);
 }
