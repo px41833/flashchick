@@ -110,9 +110,9 @@ int CClientNet::Connect( int port,const char* address )
 	 if (err < 0)
 	 {
 		 TRACE("connect failed with error : %d\n",err);
-
-		
 	 }
+	 sprintf_s(hostname,"%s:%d",address,port);
+	 TRACE("host:%s\n",hostname);
 	return 0;
 	
 }
@@ -150,48 +150,82 @@ void CClientNet::Close()
 {
 	closesocket(m_sock);
 }
-int CClientNet::HttpLogin(int accout,int passwds)
+void CClientNet::BuildXmlData_Logon(char *s,int accout,int passwd)
 {
 	 //初始化发送信息
     char send_str[2048] = {0};
 	char api[]="http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet";
-	char hostname[]="123.59.182.105:16915";
-
+	//char hostname[]="123.59.182.105:16915";
+	
+	itoa(accout,UserId,10);
+	itoa(passwd,Passwd,10);
     //头信息
-    strcat(send_str, "POST ");
-    strcat(send_str, api);
-    strcat(send_str, " HTTP/1.1\r\n");
-    strcat(send_str, "Host: ");
-    strcat(send_str, hostname);
-    strcat(send_str, "\r\n");
-	strcat(send_str, "Accept-Encoding:identity\r\n");
-	strcat(send_str, "Content-Length:218\r\n\r\n");
+    strcat(s, "POST ");
+    strcat(s, api);
+    strcat(s, " HTTP/1.1\r\n");
+    strcat(s, "Host: ");
+    strcat(s, hostname);
+    strcat(s, "\r\n");
+	strcat(s, "Accept-Encoding:identity\r\n");
+	
+	TiXmlDocument doc;
+	TiXmlElement root("GNNT");  
+	TiXmlElement firstChild("REQ"); 
+	firstChild.SetAttribute( "name", "logon" ); 
 
+	TiXmlElement userid("USER_ID");
+	//firstChild.InsertEndChild( userid ); 
+	TiXmlText usridtext(UserId);
+	userid.LinkEndChild(&usridtext);
+	firstChild.InsertEndChild( userid );
+
+	TiXmlElement userpwd("PASSWORD");
+	TiXmlText passwdtext(Passwd);
+	userpwd.LinkEndChild(&passwdtext);
+    firstChild.InsertEndChild( userpwd );
+
+	TiXmlElement logontype("LOGONTYPE");
+	TiXmlText logontypetext("pc");
+	logontype.LinkEndChild(&logontypetext);
+	firstChild.InsertEndChild( logontype );
+
+	root.InsertEndChild( firstChild ); 
+	doc.InsertEndChild( root );  
 	char content_header[100];
+	TiXmlPrinter printer;
+	printer.SetIndent( 0 ); // 设置缩进字符，设为 0 表示不使用缩进。默认为 4个空格，也可设为'\t'  
+	doc.Accept( &printer ); 
+
+	char content[256] = {0};  
+	int size = printer.Size(); 
+	assert( size < sizeof(content) );  
+	strcpy_s( content, sizeof(content), printer.CStr() );  
     //sprintf(content_header,"Content-Length: %d\r\n", strlen(parameters));
-	const char* demoStart =
-		"<?xml version=\"1.0\"  encoding=\"gb2312\"? >\n"
-		"<GNNT>\n"
-		"<REQ name=\"logon\">\n"
-		"<USER_ID>1299906727</USER_ID>\n"
-		"<PASSWORD>418331101</PASSWORD>\n"
-		"<REGISTER_WORD />\n"
-		"<VERSIONINFO />\n"
-		"<LOGONTYPE>pc</LOGONTYPE> \n"
-		"</REQ> \n"
-		"</GNNT> \n";
-	TiXmlDocument doc( "pxtest.xml" );
-			doc.Parse( demoStart );
-			// strcat(send_str, demoStart);
-			strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"logon\"><USER_ID>1299906727</USER_ID><PASSWORD>418331101</PASSWORD><REGISTER_WORD></REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>");
+	//const char* demoStart =
+	//	"<?xml version=\"1.0\"  encoding=\"gb2312\"? >\n"
+	//	"<GNNT>\n"
+	//	"<REQ name=\"logon\">\n"
+	//	"<USER_ID>1299906727</USER_ID>\n"
+	//	"<PASSWORD>418331101</PASSWORD>\n"
+	//	"<REGISTER_WORD />\n"
+	//	"<VERSIONINFO />\n"
+	//	"<LOGONTYPE>pc</LOGONTYPE> \n"
+	//	"</REQ> \n"
+	//	"</GNNT> \n";
+	//TiXmlDocument doc( "pxtest.xml" );
+	//		doc.Parse( demoStart );
+	//		// strcat(send_str, demoStart);
+	//		strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"logon\"><USER_ID>1299906727</USER_ID><PASSWORD>418331101</PASSWORD><REGISTER_WORD></REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>");
 
-			SendMsg(send_str,strlen(send_str));
-			DWORD ThreadID;
-			//CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFuncRecive,(LPVOID)m_sock,0,&ThreadID);
-			//Sleep(1000);
+	//		SendMsg(send_str,strlen(send_str));
+	//		DWORD ThreadID;
+	//		//CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFuncRecive,(LPVOID)m_sock,0,&ThreadID);
+	//		//Sleep(1000);
+//	 sprintf_s()
+	       char xmllen[64];
+		   sprintf_s(xmllen,"Content-Length:%d",stelen);
+			strcat(s, "Content-Length:218\r\n\r\n");
 			
-
-	return 0;
 }
 void CClientNet::ProcXmlDate(char *s)
 {
@@ -209,8 +243,8 @@ void CClientNet::ProcXmlDate(char *s)
 	 TRACE("name:%s",name);
 
 	 TiXmlHandle docHandle1 = docHandle.FirstChild( "GNNT" ).FirstChild( "REP" ).FirstChild("RESULT");
-	databaseElement= docHandle1.FirstChildElement("RETCODE").ToElement();
+	 databaseElement= docHandle1.FirstChildElement("RETCODE").ToElement();
 	//char *port = {0};  
-	 const char *por=databaseElement->GetText();
-	AfxMessageBox(por);
+	 RepCode=databaseElement->GetText();
+	AfxMessageBox(RepCode);
 }

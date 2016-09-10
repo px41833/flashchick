@@ -17,16 +17,22 @@ public:
 	int Connect(int port,const char* address);
 	//发送信息
 	int SendMsg(const char* msg,int len);
-
+	
 	int RecvMsg(char *msg,int len);
 	void ProcXmlDate(char *s);
-    int RepCode;  //登录成功后返回的随机码
-	int RetYuE;//此账号内的余额
+	void BuildXmlData_Logon(char *s,int accout,int passwd);
+	void BuildXmlData_ReqFirmInfo(char *s,int accout,int passwd);
+    
 
 	//关闭
 	void Close();
 public:
-	int HttpLogin(int accout,int passwds);
+	char hostname[32];
+	char UserId[32];
+	char Passwd[32];
+	const char *RepCode;  //登录成功后返回的随机码
+	int RetYuE;//此账号内的余额
+	//int HttpLogin(int accout,int passwds);
 
 
 private:

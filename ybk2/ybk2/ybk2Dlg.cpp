@@ -166,11 +166,12 @@ void ThreadFunc(LPVOID lpParameter)
 {
 	CTime time;
 	CString strTime;
+	char recdata[2048]={0};
 	Cybk2Dlg *ybkdlg= (Cybk2Dlg *)lpParameter;
 	CClientNet *pfconnect=new CClientNet();
 	pfconnect->Connect(16915,"123.59.182.105");
-	pfconnect->HttpLogin(ybkdlg->GetDlgItemInt(IDC_EDIT_ACCOUT,NULL,TRUE),ybkdlg->GetDlgItemInt(IDC_EDIT_MIMA,NULL,TRUE));
-	char recdata[2048]={0};
+	pfconnect->BuildXmlData_Logon(recdata,ybkdlg->GetDlgItemInt(IDC_EDIT_ACCOUT,NULL,TRUE),ybkdlg->GetDlgItemInt(IDC_EDIT_MIMA,NULL,TRUE));
+	
 	pfconnect->RecvMsg(recdata,2048);
 	//AfxMessageBox(recdata);
 	if(strlen(recdata)>0)
