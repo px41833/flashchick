@@ -157,75 +157,97 @@ void CClientNet::BuildXmlData_Logon(char *s,int accout,int passwd)
 	char api[]="http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet";
 	//char hostname[]="123.59.182.105:16915";
 	
-	itoa(accout,UserId,10);
-	itoa(passwd,Passwd,10);
+	_itoa_s(accout,UserId,10);
+	_itoa_s(passwd,Passwd,10);
+
     //头信息
-    strcat(s, "POST ");
-    strcat(s, api);
-    strcat(s, " HTTP/1.1\r\n");
-    strcat(s, "Host: ");
-    strcat(s, hostname);
-    strcat(s, "\r\n");
-	strcat(s, "Accept-Encoding:identity\r\n");
+    strcat_s(send_str, "POST ");
+    strcat_s(send_str, api);
+    strcat_s(send_str, " HTTP/1.1\r\n");
+    strcat_s(send_str, "Host: ");
+    strcat_s(send_str, hostname);
+    strcat_s(send_str, "\r\n");
+	strcat_s(send_str, "Accept-Encoding:identity\r\n");
 	
-	TiXmlDocument doc;
-	TiXmlElement root("GNNT");  
-	TiXmlElement firstChild("REQ"); 
-	firstChild.SetAttribute( "name", "logon" ); 
+	
+	strcat_s(send_str, "Content-Length:252\r\n\r\n");
+	sprintf(s,"%s<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"logon\"><USER_ID>%d</USER_ID><PASSWORD>%d</PASSWORD><REGISTER_WORD></REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>",send_str,accout,passwd);
+	return ;
+	//用下面的死活不行，醉了
+	//TiXmlDocument doc;
+	//TiXmlElement* root = new TiXmlElement("GNNT");
+	//doc.LinkEndChild(root);
+	//TiXmlElement* element1 = new TiXmlElement("REQ");
+	//root->LinkEndChild(element1);
+	//element1->SetAttribute("name", "logon");
+	//TiXmlElement* userid = new TiXmlElement("USER_ID");  ///元素
+	//element1->LinkEndChild(userid);
 
-	TiXmlElement userid("USER_ID");
-	//firstChild.InsertEndChild( userid ); 
-	TiXmlText usridtext(UserId);
-	userid.LinkEndChild(&usridtext);
-	firstChild.InsertEndChild( userid );
+	//TiXmlText* useridtext = new TiXmlText(UserId);  ///文本
+	//userid->LinkEndChild(useridtext);
 
-	TiXmlElement userpwd("PASSWORD");
-	TiXmlText passwdtext(Passwd);
-	userpwd.LinkEndChild(&passwdtext);
-    firstChild.InsertEndChild( userpwd );
+	//TiXmlElement* userpwd = new TiXmlElement("PASSWORD");  ///元素
+	//element1->LinkEndChild(userpwd);
+	//TiXmlText* passwdtext = new TiXmlText(Passwd);  ///文本
+	//userpwd->LinkEndChild(passwdtext);
 
-	TiXmlElement logontype("LOGONTYPE");
-	TiXmlText logontypetext("pc");
-	logontype.LinkEndChild(&logontypetext);
-	firstChild.InsertEndChild( logontype );
+	//TiXmlElement* logontype = new TiXmlElement("LOGONTYPE");  ///元素
+	//element1->LinkEndChild(logontype);
+	//TiXmlText* logontypetext = new TiXmlText("pc");  ///文本
+	//logontype->LinkEndChild(logontypetext);
+	//
+	//TiXmlPrinter printer;
+	//printer.SetIndent( 0 ); // 设置缩进字符，设为 0 表示不使用缩进。默认为 4个空格，也可设为'\t'  
+	//doc.Accept( &printer ); 
 
-	root.InsertEndChild( firstChild ); 
-	doc.InsertEndChild( root );  
-	char content_header[100];
-	TiXmlPrinter printer;
-	printer.SetIndent( 0 ); // 设置缩进字符，设为 0 表示不使用缩进。默认为 4个空格，也可设为'\t'  
-	doc.Accept( &printer ); 
-
-	char content[256] = {0};  
-	int size = printer.Size(); 
-	assert( size < sizeof(content) );  
-	strcpy_s( content, sizeof(content), printer.CStr() );  
-    //sprintf(content_header,"Content-Length: %d\r\n", strlen(parameters));
-	//const char* demoStart =
-	//	"<?xml version=\"1.0\"  encoding=\"gb2312\"? >\n"
-	//	"<GNNT>\n"
-	//	"<REQ name=\"logon\">\n"
-	//	"<USER_ID>1299906727</USER_ID>\n"
-	//	"<PASSWORD>418331101</PASSWORD>\n"
-	//	"<REGISTER_WORD />\n"
-	//	"<VERSIONINFO />\n"
-	//	"<LOGONTYPE>pc</LOGONTYPE> \n"
-	//	"</REQ> \n"
-	//	"</GNNT> \n";
-	//TiXmlDocument doc( "pxtest.xml" );
-	//		doc.Parse( demoStart );
-	//		// strcat(send_str, demoStart);
+	//char content[256] = {0};  
+	//int size = printer.Size(); 
+	//assert( size < sizeof(content) );  
+	//strcpy_s( content, sizeof(content), printer.CStr() );  
+    
 	//		strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"logon\"><USER_ID>1299906727</USER_ID><PASSWORD>418331101</PASSWORD><REGISTER_WORD></REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>");
 
 	//		SendMsg(send_str,strlen(send_str));
 	//		DWORD ThreadID;
 	//		//CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFuncRecive,(LPVOID)m_sock,0,&ThreadID);
-	//		//Sleep(1000);
-//	 sprintf_s()
-	       char xmllen[64];
-		   sprintf_s(xmllen,"Content-Length:%d",stelen);
-			strcat(s, "Content-Length:218\r\n\r\n");
+
+	  /*     char xmllen[64];
+		   sprintf_s(xmllen,"Content-Length:%d\r\n",218);
+		   
+		   strcat(s, xmllen);
+		    strcat(s, "<?xml version=\"1.0\" encoding=\"gb2312\"?>");
+		    strcat(s, "\r\n");
+		   */
+		   
+			//strcat_s()
+			//strcat(s, content);
+		  // sprintf(s,"%s%s%s",send_str,content,"/GNNT");
+			//doc.Clear();
 			
+}
+void CClientNet::BuildXmlData_ReqFirmInfo(char *s)
+{
+
+	sprintf(s,"POST http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet HTTP/1.1\r\nHost: 123.59.182.105:16915\r\nAccept-Encoding: identity\r\nContent-Length: 153\r\n\r\n<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"firm_info\"><USER_ID>1299906727</USER_ID><SESSION_ID>%s</SESSION_ID></REQ></GNNT>",RepCode);
+	return;
+	char send_str[2048] = {0};
+	char api[]="http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet";
+	//char hostname[]="123.59.182.105:16915";
+
+
+	//头信息
+	strcat_s(send_str, "POST ");
+	strcat_s(send_str, api);
+	strcat_s(send_str, " HTTP/1.1\r\n");
+	strcat_s(send_str, "Host: ");
+	strcat_s(send_str, hostname);
+	strcat_s(send_str, "\r\n");
+	strcat_s(send_str, "Accept-Encoding:identity\r\n");
+
+
+	strcat_s(send_str, "Content-Length:153\r\n\r\n");
+	sprintf(s,"%s<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"firm_info\"><USER_ID>1299906727</USER_ID><SESSION_ID>%s</SESSION_ID></REQ></GNNT>",send_str,RepCode);
+	return ;
 }
 void CClientNet::ProcXmlDate(char *s)
 {
@@ -245,6 +267,7 @@ void CClientNet::ProcXmlDate(char *s)
 	 TiXmlHandle docHandle1 = docHandle.FirstChild( "GNNT" ).FirstChild( "REP" ).FirstChild("RESULT");
 	 databaseElement= docHandle1.FirstChildElement("RETCODE").ToElement();
 	//char *port = {0};  
-	 RepCode=databaseElement->GetText();
-	AfxMessageBox(RepCode);
+	const char *retcode=databaseElement->GetText();
+	strcpy_s(RepCode,retcode);
+	//AfxMessageBox(RepCode);
 }
