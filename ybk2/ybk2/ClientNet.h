@@ -20,6 +20,7 @@ public:
 	
 	int RecvMsg(char *msg,int len);
 	void ProcXmlDate(char *s);
+	void ProcXmlDateEx(char *s);
 	void BuildXmlData_Logon(char *s,int accout,int passwd);
 	void BuildXmlData_ReqFirmInfo(char *s);
     
@@ -30,7 +31,7 @@ public:
 	char hostname[32];
 	char UserId[32];
 	char Passwd[32];
-	char RepCode[64];  //登录成功后返回的随机码
+	char RepCode[128];  //登录成功后返回的随机码
 	int RetYuE;//此账号内的余额
 	//int HttpLogin(int accout,int passwds);
 

@@ -90,7 +90,7 @@ int CClientNet::Connect( int port,const char* address )
 	int err;
 	WORD versionRequired;
 	WSADATA wsaData;
-	versionRequired=MAKEWORD(1,1);
+	versionRequired=MAKEWORD(2,2);
 	err=WSAStartup(versionRequired,&wsaData);//协议库的版本信息
 	if (!err)
 	{
@@ -228,8 +228,7 @@ void CClientNet::BuildXmlData_Logon(char *s,int accout,int passwd)
 void CClientNet::BuildXmlData_ReqFirmInfo(char *s)
 {
 
-	sprintf(s,"POST http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet HTTP/1.1\r\nHost: 123.59.182.105:16915\r\nAccept-Encoding: identity\r\nContent-Length: 153\r\n\r\n<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"firm_info\"><USER_ID>1299906727</USER_ID><SESSION_ID>%s</SESSION_ID></REQ></GNNT>",RepCode);
-	return;
+
 	char send_str[2048] = {0};
 	char api[]="http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet";
 	//char hostname[]="123.59.182.105:16915";
@@ -246,7 +245,11 @@ void CClientNet::BuildXmlData_ReqFirmInfo(char *s)
 
 
 	strcat_s(send_str, "Content-Length:153\r\n\r\n");
-	sprintf(s,"%s<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"firm_info\"><USER_ID>1299906727</USER_ID><SESSION_ID>%s</SESSION_ID></REQ></GNNT>",send_str,RepCode);
+	strcat_s(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"firm_info\"><USER_ID>1299906727</USER_ID><SESSION_ID>");
+	strcat_s(send_str,RepCode);
+	strcat_s(send_str,"</SESSION_ID></REQ></GNNT>");
+	memcpy(s,send_str,sizeof(send_str));
+	//sprintf(s,"%s<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"firm_info\"><USER_ID>1299906727</USER_ID><SESSION_ID>%s</SESSION_ID></REQ></GNNT>",send_str,RepCode);
 	return ;
 }
 void CClientNet::ProcXmlDate(char *s)
@@ -270,4 +273,42 @@ void CClientNet::ProcXmlDate(char *s)
 	const char *retcode=databaseElement->GetText();
 	strcpy_s(RepCode,retcode);
 	//AfxMessageBox(RepCode);
+}
+void CClientNet::ProcXmlDateEx(char *s)
+{
+	//此处接收的数据有HTTP头需要去掉
+	//char *xmldata=strchr(s,'<');
+	char *start=strstr(s,"<RETCODE>");
+	char *end=strstr(s,"</RETCODE>");
+	memset(RepCode, 0, sizeof(RepCode));
+	memcpy(RepCode,start+sizeof("<RETCODE>")-1,end-start-sizeof("<RETCODE>")+1);
+	//strcpy_s(RepCode,retcode);
+	//AfxMessageBox(RepCode);
+
+		///////////////////////////////////////////////////////////////////
+	//头信息
+	char send_str[2048] = {0};
+	memset(send_str, 0, sizeof(send_str));
+
+
+	char appi[]="http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet";
+	strcat(send_str, "POST ");
+	strcat(send_str, appi);
+	strcat(send_str, " HTTP/1.1\r\n");
+	strcat(send_str, "Host: ");
+	strcat(send_str, hostname);
+	strcat(send_str, "\r\n");
+	strcat(send_str, "Accept-Encoding:identity\r\n");
+	strcat(send_str, "Content-Length:153\r\n\r\n");
+
+	strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"firm_info\"><USER_ID>1299906727</USER_ID><SESSION_ID>");
+	strcat(send_str,RepCode);
+	strcat(send_str,"</SESSION_ID></REQ></GNNT>");
+	//SendMsg(send_str,strlen(send_str));
+	send(m_sock, send_str, strlen(send_str),0); ///发送
+	    char recvbuf[1024];
+		memset(recvbuf, 0, sizeof(recvbuf));
+	recv(m_sock, recvbuf, sizeof(recvbuf),0); ///接收
+
+	TRACE("recv:%s\n",recvbuf);
 }
