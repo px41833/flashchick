@@ -105,6 +105,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />
+    <ClInclude Include="YBClientNet.h" />
     <ClInclude Include="ybk2.h" />
     <ClInclude Include="ybk2Dlg.h" />
   </ItemGroup>
@@ -118,6 +119,7 @@
     <ClCompile Include="tinyxml.cpp" />
     <ClCompile Include="tinyxmlerror.cpp" />
     <ClCompile Include="tinyxmlparser.cpp" />
+    <ClCompile Include="YBClientNet.cpp" />
     <ClCompile Include="ybk2.cpp" />
     <ClCompile Include="ybk2Dlg.cpp" />
   </ItemGroup>

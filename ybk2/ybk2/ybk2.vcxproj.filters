@@ -48,6 +48,9 @@
     <ClInclude Include="tinyxml.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="YBClientNet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ybk2.cpp">
@@ -72,6 +75,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="YBClientNet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
