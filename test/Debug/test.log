@@ -1,4 +1,4 @@
-﻿生成启动时间为 2016/9/12 23:27:25。
+﻿生成启动时间为 2016/9/14 23:28:52。
      1>项目“D:\ybk\devlop\test\test.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
          正在创建“Debug\test.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
@@ -18,4 +18,4 @@
 
 生成成功。
 
-已用时间 00:00:00.36
+已用时间 00:00:00.34

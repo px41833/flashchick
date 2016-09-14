@@ -8,6 +8,11 @@
 #define MYPORT  16915
 #define IPADDR  "123.59.182.105"
 #define BUFFER_SIZE 1024
+SOCKET sclient;
+char api[]="http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet";
+char hostname[]="123.59.182.105:16915";
+char retcode[128];
+
 time_t GetCurrMSForMe() //获取1970年到现在的毫秒数
 {
 	SYSTEMTIME tTime = {0};
@@ -20,7 +25,72 @@ time_t GetCurrMSForMe() //获取1970年到现在的毫秒数
 	ui.LowPart = fTime.dwLowDateTime;
 	ui.HighPart = fTime.dwHighDateTime;
 
+	return ((ULONGLONG)(ui.QuadPart-116444736000000000)/10000);
+}
+
+time_t GetSetTimeForMe() //获取1970年到现在的毫秒数
+{
+	SYSTEMTIME tTime = {0};
+	GetSystemTime(&tTime);
+	tTime.wDay=15;
+	tTime.wHour=9;
+	tTime.wMinute=30;
+	tTime.wSecond=0;
+	tTime.wMilliseconds=0;
+
+	FILETIME fTime = {0};
+	SystemTimeToFileTime(&tTime, &fTime);
+
+	ULARGE_INTEGER ui;
+	ui.LowPart = fTime.dwLowDateTime;
+	ui.HighPart = fTime.dwHighDateTime;
+
 	return ((LONGLONG)(ui.QuadPart-116444736000000000)/10000);
+}
+void ThreadFuncSycTime(LPVOID lpParameter)
+{
+	char sendbuf[BUFFER_SIZE];
+	char recvbuf[BUFFER_SIZE];
+
+
+	//初始化发送信息
+	char send_str[2048] = {0};
+	memset(sendbuf, 0, sizeof(sendbuf));
+	memset(recvbuf, 0, sizeof(recvbuf));
+	memset(send_str, 0, sizeof(send_str));
+
+	//头信息
+	strcat(send_str, "POST ");
+	strcat(send_str, api);
+	strcat(send_str, " HTTP/1.1\r\n");
+	strcat(send_str, "Host: ");
+	strcat(send_str, hostname);
+	strcat(send_str, "\r\n");
+	strcat(send_str, "Accept-Encoding:identity\r\n");
+	strcat(send_str, "Content-Length:212\r\n\r\n");
+
+	strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"sys_time_query\"><USER_ID>1299906727</USER_ID><LAST_ID>0</LAST_ID><TD_CNT>0</TD_CNT><SESSION_ID>");
+	strcat(send_str,retcode);
+	strcat(send_str,"</SESSION_ID><CU_LG>1</CU_LG></REQ></GNNT>");
+
+	printf("!!!!!!!!!!4 step syn time!!!!!!!!!!!!!send_str:%s\n",send_str);
+	SYSTEMTIME st;
+
+	// CString strDate,strTime;
+	while(1)
+	{
+
+		send(sclient, send_str, strlen(send_str),0); ///发送
+
+		recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
+		fputs(recvbuf, stdout);
+
+
+		printf("\r\ntime:%lld\n",GetCurrMSForMe());
+		printf("\r\ntime:%lld\n",GetSetTimeForMe());
+		Sleep(5*1000);
+	
+	}
 }
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -31,7 +101,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			return 0;
 		}
 
-		SOCKET sclient = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+		sclient = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if(sclient == INVALID_SOCKET)
 		{
 			printf("invalid socket !");
@@ -51,12 +121,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		char * sendData = "你好，TCP服务端，我是客户端!\n";
 		char sendbuf[BUFFER_SIZE];
 		char recvbuf[BUFFER_SIZE];
-		char retcode[128];
+		
 
 			//初始化发送信息
 			char send_str[2048] = {0};
-			char api[]="http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet";
-			char hostname[]="123.59.182.105:16915";
+			
 			// char api[]="http://221.12.156.123:16915/issue_tradeweb/httpXmlServlet";
 			//char hostname[]="221.12.156.123:16915";
 
@@ -136,47 +205,14 @@ int _tmain(int argc, _TCHAR* argv[])
 		 while(0!=recv(sclient, recvbuf, sizeof(recvbuf),0)) ///接收
 		 fputs(recvbuf, stdout);*/
 
-		 memset(sendbuf, 0, sizeof(sendbuf));
-		 memset(recvbuf, 0, sizeof(recvbuf));
-		 memset(send_str, 0, sizeof(send_str));
-
-		 //头信息
-		 strcat(send_str, "POST ");
-		 strcat(send_str, api);
-		 strcat(send_str, " HTTP/1.1\r\n");
-		 strcat(send_str, "Host: ");
-		 strcat(send_str, hostname);
-		 strcat(send_str, "\r\n");
-		 strcat(send_str, "Accept-Encoding:identity\r\n");
-		 strcat(send_str, "Content-Length:212\r\n\r\n");
-
-		 strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"sys_time_query\"><USER_ID>1299906727</USER_ID><LAST_ID>0</LAST_ID><TD_CNT>0</TD_CNT><SESSION_ID>");
-		 strcat(send_str,retcode);
-		 strcat(send_str,"</SESSION_ID><CU_LG>1</CU_LG></REQ></GNNT>");
-
-		 printf("!!!!!!!!!!4 step syn time!!!!!!!!!!!!!send_str:%s\n",send_str);
-		 SYSTEMTIME st;
-
-		// CString strDate,strTime;
-		 for (int i=0;i<4;i++)
-		 {
-	
-		 send(sclient, send_str, strlen(send_str),0); ///发送
-
-		 recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
-		 fputs(recvbuf, stdout);
 		 
 
-		 printf("\r\ntime:%lld\n",GetCurrMSForMe());
-		 //GetLocalTime(&st);
-		 //printf("\r\ni:%d,time:%u:%u:%u:%d:%d:%d:%d\n",i,st.wYear,st.wMonth,st.wDay,st.wHour,st.wMinute,st.wSecond,st.wMilliseconds);
-		// strDate.Format("M----",st.wYear,st.wMonth,st.wDay);
-
-		 //strTime.Format("-:-:-",st.wHour,st.wMinute,st.wSecond) ;
-
-		 //AfxMessageBox(strDate);
-
-		 //AfxMessageBox(strTime);
+		 DWORD ThreadID;
+		 HANDLE hThread;
+		 hThread=CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFuncSycTime,NULL,0,&ThreadID);
+		 while (1)
+		 {
+			 ;
 		 }
 		closesocket(sclient);
 		WSACleanup();
