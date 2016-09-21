@@ -13,6 +13,9 @@ char api[]="http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet";
 char hostname[]="123.59.182.105:16915";
 char retcode[128];
 
+char sertime[128];
+long diff=0;
+
 time_t GetCurrMSForMe() //获取1970年到现在的毫秒数
 {
 	SYSTEMTIME tTime = {0};
@@ -25,16 +28,16 @@ time_t GetCurrMSForMe() //获取1970年到现在的毫秒数
 	ui.LowPart = fTime.dwLowDateTime;
 	ui.HighPart = fTime.dwHighDateTime;
 
-	return ((ULONGLONG)(ui.QuadPart-116444736000000000)/10000);
+	return ((LONGLONG)(ui.QuadPart-116444736000000000)/10000);
 }
 
 time_t GetSetTimeForMe() //获取1970年到现在的毫秒数
 {
 	SYSTEMTIME tTime = {0};
 	GetSystemTime(&tTime);
-	tTime.wDay=15;
-	tTime.wHour=9;
-	tTime.wMinute=30;
+	tTime.wDay=21;
+	tTime.wHour=22;
+	tTime.wMinute=18;
 	tTime.wSecond=0;
 	tTime.wMilliseconds=0;
 
@@ -85,9 +88,17 @@ void ThreadFuncSycTime(LPVOID lpParameter)
 		recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
 		fputs(recvbuf, stdout);
 
-
-		printf("\r\ntime:%lld\n",GetCurrMSForMe());
-		printf("\r\ntime:%lld\n",GetSetTimeForMe());
+		char *start=strstr(recvbuf,"<TV_U>");
+		char *end=strstr(recvbuf,"</TV_U>");
+		memset(sertime, 0, sizeof(sertime));
+		memcpy(sertime,start+sizeof("<TV_U>")-1,end-start-sizeof("<TV_U>")+1);
+		printf("\nsertime:%s\n",sertime);
+		LONGLONG timea;
+		sscanf(sertime,"%lld",&timea);
+		printf("\nsertimelong:%lld\n",timea);
+		diff=GetCurrMSForMe()-timea;
+		//printf("\r\ntime:%lld\n",GetCurrMSForMe());
+		printf("\r\ndiff time:%ld\n",diff);
 		Sleep(5*1000);
 	
 	}
@@ -212,7 +223,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		 hThread=CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFuncSycTime,NULL,0,&ThreadID);
 		 while (1)
 		 {
-			 ;
+			 if (GetCurrMSForMe()>(GetSetTimeForMe()-diff))
+			 {
+				 printf("sussces!!!!!\n");
+			 }
+			 
 		 }
 		closesocket(sclient);
 		WSACleanup();
