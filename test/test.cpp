@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <WINSOCK2.H>
 #include <STDIO.H>
+#include  <iostream>
 #pragma  comment(lib,"ws2_32.lib")
 #define MYPORT  16915
 #define IPADDR  "123.59.182.105"
@@ -15,7 +16,7 @@ char retcode[128];
 
 char sertime[128];
 long diff=0;
-
+using namespace std;
 time_t GetCurrMSForMe() //获取1970年到现在的毫秒数
 {
 	SYSTEMTIME tTime = {0};
@@ -221,8 +222,17 @@ int _tmain(int argc, _TCHAR* argv[])
 		 DWORD ThreadID;
 		 HANDLE hThread;
 		 hThread=CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFuncSycTime,NULL,0,&ThreadID);
+		 char ybcode[10];
+		 int   count=0;
+		 char ybsale[10];
+		 cout<<"please input a string:";
+		 cout<<endl;
+		  std::cin>>ybcode;
+		  cout<<"ybcode:" <<ybcode<<endl;
+
 		 while (1)
 		 {
+			
 			 if (GetCurrMSForMe()>(GetSetTimeForMe()-diff))
 			 {
 				 printf("sussces!!!!!\n");
