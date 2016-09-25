@@ -1,0 +1,44 @@
+POST /issue_tradeweb/httpXmlServlet HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: 123.59.182.100:16915
+Content-Length: 262
+Expect: 100-continue
+Connection: Keep-Alive
+
+HTTP/1.1 100 Continue
+
+<?xml version="1.0" encoding="gb2312"?><GNNT><REQ name="logon"><USER_ID>1299906727</USER_ID><PASSWORD>418331101</PASSWORD><REGISTER_WORD>20160925143000789129990672780170.01900402746</REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/xml;charset=GBK
+Content-Length: 426
+Date: Sun, 25 Sep 2016 07:45:55 GMT
+
+<?xml version="1.0" encoding="GBK"?><GNNT><REP name="logon"><RESULT><RETCODE>6939697159457598031</RETCODE><MESSAGE></MESSAGE><MODULE_ID>18</MODULE_ID><TYPE></TYPE><LAST_TIME>2016-09-25 14:30:00</LAST_TIME><LAST_IP>223.73.7.124</LAST_IP><CHG_PWD>2</CHG_PWD><NAME>1299906727</NAME><RANDOM_KEY>20160925154556684129990672726626.479701738892</RANDOM_KEY><USERID>1299906727</USERID><TRADE_SITE>154</TRADE_SITE></RESULT></REP></GNNT>POST /issue_tradeweb/httpXmlServlet HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: 123.59.182.100:16915
+Content-Length: 231
+Expect: 100-continue
+
+HTTP/1.1 100 Continue
+
+<?xml version="1.0" encoding="gb2312"?><GNNT><REQ name="check_user"><USER_ID>1299906727</USER_ID><SESSION_ID>6939697159457598031</SESSION_ID><MODULE_ID>18</MODULE_ID><F_LOGONTYPE></F_LOGONTYPE><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/xml;charset=GBK
+Content-Length: 159
+Date: Sun, 25 Sep 2016 07:46:01 GMT
+
+<?xml version="1.0" encoding="GBK"?><GNNT><REP name="check_user"><RESULT><RETCODE>0</RETCODE><MESSAGE></MESSAGE><MODULE_ID>18</MODULE_ID></RESULT></REP></GNNT>POST /issue_tradeweb/httpXmlServlet HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: 123.59.182.100:16915
+Content-Length: 212
+Expect: 100-continue
+
+HTTP/1.1 100 Continue
+
+<?xml version="1.0" encoding="gb2312"?><GNNT><REQ name="sys_time_query"><USER_ID>1299906727</USER_ID><LAST_ID>0</LAST_ID><TD_CNT>0</TD_CNT><SESSION_ID>6939697159457598031</SESSION_ID><CU_LG>1</CU_LG></REQ></GNNT>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/xml;charset=GBK
+Content-Length: 300
+Date: Sun, 25 Sep 2016 07:46:01 GMT
+
+<?xml version="1.0" encoding="GBK"?><GNNT><REP name="sys_time_query"><RESULT><RETCODE>0</RETCODE><MESSAGE></MESSAGE><TRADE_SITE>154</TRADE_SITE><CU_T>15:46:00</CU_T><CU_D>2016-09-25</CU_D><TV_U>1474789560820</TV_U><MARK>0</MARK><NEW_T>0</NEW_T><TD_TTL>null</TD_TTL><DAY>24</DAY></RESULT></REP></GNNT>

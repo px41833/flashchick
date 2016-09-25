@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml", "tinyxml_lib.vcxp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "..\test\test.vcxproj", "{D2ED7F88-3493-48C1-A5FF-1F86ADC0112B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "afanti", "..\afanti\afanti\afanti.vcxproj", "{19ECB765-F121-4930-A797-717D25FDDE22}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zhongwen", "..\zhongwen\zhongwen\zhongwen.vcxproj", "{94FD5B77-F8A7-4FC9-9AAB-C4FB2EB2F56F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +35,14 @@ Global
 		{D2ED7F88-3493-48C1-A5FF-1F86ADC0112B}.Debug|Win32.Build.0 = Debug|Win32
 		{D2ED7F88-3493-48C1-A5FF-1F86ADC0112B}.Release|Win32.ActiveCfg = Release|Win32
 		{D2ED7F88-3493-48C1-A5FF-1F86ADC0112B}.Release|Win32.Build.0 = Release|Win32
+		{19ECB765-F121-4930-A797-717D25FDDE22}.Debug|Win32.ActiveCfg = Debug|Win32
+		{19ECB765-F121-4930-A797-717D25FDDE22}.Debug|Win32.Build.0 = Debug|Win32
+		{19ECB765-F121-4930-A797-717D25FDDE22}.Release|Win32.ActiveCfg = Release|Win32
+		{19ECB765-F121-4930-A797-717D25FDDE22}.Release|Win32.Build.0 = Release|Win32
+		{94FD5B77-F8A7-4FC9-9AAB-C4FB2EB2F56F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{94FD5B77-F8A7-4FC9-9AAB-C4FB2EB2F56F}.Debug|Win32.Build.0 = Debug|Win32
+		{94FD5B77-F8A7-4FC9-9AAB-C4FB2EB2F56F}.Release|Win32.ActiveCfg = Release|Win32
+		{94FD5B77-F8A7-4FC9-9AAB-C4FB2EB2F56F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

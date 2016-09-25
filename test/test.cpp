@@ -7,16 +7,24 @@
 #include  <iostream>
 #pragma  comment(lib,"ws2_32.lib")
 #define MYPORT  16915
-#define IPADDR  "123.59.182.105"
+#define IPADDR  "58.83.219.245"
 #define BUFFER_SIZE 1024
 SOCKET sclient;
-char api[]="http://123.59.182.105:16915/issue_tradeweb/httpXmlServlet";
-char hostname[]="123.59.182.105:16915";
+char api[]="/issue_tradeweb/httpXmlServlet ";
+char hostname[]="58.83.219.245:16915";
 char retcode[128];
 
 char sertime[128];
 long diff=0;
 using namespace std;
+
+int month;
+int day;
+int hour;
+int mintue;
+//int seccond;
+ HANDLE hThread;
+
 time_t GetCurrMSForMe() //获取1970年到现在的毫秒数
 {
 	SYSTEMTIME tTime = {0};
@@ -35,15 +43,21 @@ time_t GetCurrMSForMe() //获取1970年到现在的毫秒数
 time_t GetSetTimeForMe() //获取1970年到现在的毫秒数
 {
 	SYSTEMTIME tTime = {0};
-	GetSystemTime(&tTime);
-	tTime.wDay=21;
-	tTime.wHour=22;
-	tTime.wMinute=18;
+	//GetSystemTime(&tTime);
+	GetLocalTime(&tTime);
+	//printf("year:%d,month:%d,day:%d,hour:%d,minute:%d,sec:%d\n",tTime.wYear,tTime.wMonth,tTime.wDay,tTime.wHour,tTime.wMinute,tTime.wSecond);
+	tTime.wMonth=month;
+	tTime.wDay=day;
+	tTime.wHour=hour;
+	tTime.wMinute=mintue;
 	tTime.wSecond=0;
 	tTime.wMilliseconds=0;
 
 	FILETIME fTime = {0};
-	SystemTimeToFileTime(&tTime, &fTime);
+	FILETIME tempTime = {0};
+	SystemTimeToFileTime(&tTime, &tempTime);
+
+	LocalFileTimeToFileTime(&tempTime, &fTime);
 
 	ULARGE_INTEGER ui;
 	ui.LowPart = fTime.dwLowDateTime;
@@ -96,9 +110,9 @@ void ThreadFuncSycTime(LPVOID lpParameter)
 		printf("\nsertime:%s\n",sertime);
 		LONGLONG timea;
 		sscanf(sertime,"%lld",&timea);
-		printf("\nsertimelong:%lld\n",timea);
+		//printf("\nsertimelong:%lld\n",timea);
 		diff=GetCurrMSForMe()-timea;
-		//printf("\r\ntime:%lld\n",GetCurrMSForMe());
+		printf("\r\n settime:%lld\n",GetSetTimeForMe());
 		printf("\r\ndiff time:%ld\n",diff);
 		Sleep(5*1000);
 	
@@ -112,6 +126,18 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			return 0;
 		}
+		/*cout<<"请输入购买的时间:月 日 时 分";
+		cout<<endl;
+		std::cin>>month>>day>>hour>>mintue;
+		cout<<"time:" <<month<<' '<<day<<' '<<hour<<' '<<mintue<<endl;
+
+		char ybcode[10];
+		int   count=0;
+		char ybsale[10];
+		cout<<"请输入购买的邮票:代码 数量 价格";
+		cout<<endl;
+		std::cin>>ybcode>>count>>ybsale;
+		cout<<"ybcode:" <<ybcode<<' '<<count<<' '<<ybsale<<endl;*/
 
 		sclient = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if(sclient == INVALID_SOCKET)
@@ -122,45 +148,44 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		sockaddr_in serAddr;
 		serAddr.sin_family = AF_INET;
-		serAddr.sin_port = htons(16915);
-		serAddr.sin_addr.S_un.S_addr = inet_addr("123.59.182.105"); 
+		serAddr.sin_port = htons(MYPORT);
+		serAddr.sin_addr.S_un.S_addr = inet_addr(IPADDR); 
 		if (connect(sclient, (sockaddr *)&serAddr, sizeof(serAddr)) == SOCKET_ERROR)
 		{
 			printf("connect error !");
 			closesocket(sclient);
 			return 0;
 		}
-		char * sendData = "你好，TCP服务端，我是客户端!\n";
+		
 		char sendbuf[BUFFER_SIZE];
 		char recvbuf[BUFFER_SIZE];
 		
 
 			//初始化发送信息
 			char send_str[2048] = {0};
-			
-			// char api[]="http://221.12.156.123:16915/issue_tradeweb/httpXmlServlet";
-			//char hostname[]="221.12.156.123:16915";
-
+		
 			//头信息
 			strcat(send_str, "POST ");
 			strcat(send_str, api);
 			strcat(send_str, " HTTP/1.1\r\n");
+			strcat(send_str, "Content-Type: application/x-www-form-urlencoded\r\n");
 			strcat(send_str, "Host: ");
 			strcat(send_str, hostname);
 			strcat(send_str, "\r\n");
-			strcat(send_str, "Accept-Encoding:identity\r\n");
-			strcat(send_str, "Content-Length:218\r\n\r\n");
-
-			char content_header[100];
-			//sprintf(content_header,"Content-Length: %d\r\n", strlen(parameters));
+			strcat(send_str, "Content-Length:268\r\n");
+			//strcat(send_str, "Expect: 100-continue\r\n");
+			strcat(send_str, "Connection: Keep-Alive\r\n\r\n");
 			
-			strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"logon\"><USER_ID>1299906727</USER_ID><PASSWORD>418331101</PASSWORD><REGISTER_WORD></REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>");
 
-			printf("!!!!!!!!!!11step!!!!!!!!!!!!!send_str:%s\n",send_str);
+			
+			strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"logon\"><USER_ID>G005800432266</USER_ID><PASSWORD>418331101</PASSWORD><REGISTER_WORD>20160925170840948G00580043226628754.87370140286</REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>");
+
+			printf("logon send_str:%s\n",send_str);
 		send(sclient, send_str, strlen(send_str), 0);
 
 		 recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
-
+		 fputs(recvbuf, stdout);
+		 while(1);
 		 char *start=strstr(recvbuf,"<RETCODE>");
 		 char *end=strstr(recvbuf,"</RETCODE>");
 		 memset(retcode, 0, sizeof(retcode));
@@ -216,26 +241,52 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		 while(0!=recv(sclient, recvbuf, sizeof(recvbuf),0)) ///接收
 		 fputs(recvbuf, stdout);*/
-
 		 
-
+		
+		 
 		 DWORD ThreadID;
-		 HANDLE hThread;
+		
 		 hThread=CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFuncSycTime,NULL,0,&ThreadID);
-		 char ybcode[10];
-		 int   count=0;
-		 char ybsale[10];
-		 cout<<"please input a string:";
-		 cout<<endl;
-		  std::cin>>ybcode;
-		  cout<<"ybcode:" <<ybcode<<endl;
+		 //CloseHandle(hThread);
+
+		 memset(sendbuf, 0, sizeof(sendbuf));
+		 memset(recvbuf, 0, sizeof(recvbuf));
+		 memset(send_str, 0, sizeof(send_str));
+
+		 //头信息
+		 strcat(send_str, "POST ");
+		 strcat(send_str, api);
+		 strcat(send_str, " HTTP/1.1\r\n");
+		 strcat(send_str, "Host: ");
+		 strcat(send_str, hostname);
+		 strcat(send_str, "\r\n");
+		 strcat(send_str, "Accept-Encoding:identity\r\n");
+		 strcat(send_str, "Content-Length:397\r\n\r\n");
+
+		 strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"order\"><USER_ID>1299906727</USER_ID><CUSTOMER_ID></CUSTOMER_ID><BUY_SELL>1</BUY_SELL><COMMODITY_ID>99600001</COMMODITY_ID><PRICE>45.97</PRICE><QTY>1</QTY><SETTLE_BASIS>1</SETTLE_BASIS><CLOSEMODE>0</CLOSEMODE><TIMEFLAG>0</TIMEFLAG><L_PRICE>0</L_PRICE><SESSION_ID>");
+		 strcat(send_str,retcode);
+		 strcat(send_str,"</SESSION_ID><BILLTYPE>0</BILLTYPE></REQ></GNNT>");
+		 printf("buy send_str:%s\n",send_str);
 
 		 while (1)
 		 {
 			
 			 if (GetCurrMSForMe()>(GetSetTimeForMe()-diff))
 			 {
-				 printf("sussces!!!!!\n");
+				 
+				 for (int i=0;i<1;i++)
+				 {
+					 printf("sussces:%lld\n",(GetSetTimeForMe()-diff));
+					 send(sclient, send_str, strlen(send_str),0); ///发送
+					 //if(strcmp(sendbuf,"exit\n")==0)
+					 //  break;
+					 recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
+					 fputs(recvbuf, stdout);
+				 }
+				 //break;
+				 TerminateThread(hThread,0);
+				 while (1);
+				 
 			 }
 			 
 		 }
