@@ -133,13 +133,13 @@ int _tmain(int argc, _TCHAR* argv[])
 		std::cin>>month>>day>>hour>>mintue;
 		cout<<"time:" <<month<<' '<<day<<' '<<hour<<' '<<mintue<<endl;
 
-		char ybcode[10];
+		/*char ybcode[10];
 		int   count=0;
 		char ybsale[10];
 		cout<<"请输入购买的邮票:代码 数量 价格";
 		cout<<endl;
 		std::cin>>ybcode>>count>>ybsale;
-		cout<<"ybcode:" <<ybcode<<' '<<count<<' '<<ybsale<<endl;
+		cout<<"ybcode:" <<ybcode<<' '<<count<<' '<<ybsale<<endl;*/
 
 		sclient = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if(sclient == INVALID_SOCKET)
@@ -269,7 +269,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		 //strcat(send_str, "Expect: 100-continue\r\n");
 		 strcat(send_str, "Connection: Keep-Alive\r\n\r\n");
 
-		 strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"order\"><USER_ID>01800000000154</USER_ID><CUSTOMER_ID>0180000000015400</CUSTOMER_ID><BUY_SELL>1</BUY_SELL><COMMODITY_ID>99603005</COMMODITY_ID><PRICE>32.23</PRICE><QTY>2</QTY><SETTLE_BASIS>1</SETTLE_BASIS><CLOSEMODE>0</CLOSEMODE><TIMEFLAG>0</TIMEFLAG><L_PRICE>0</L_PRICE><SESSION_ID>");
+		 strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"order\"><USER_ID>01800000000154</USER_ID><CUSTOMER_ID>0180000000015400</CUSTOMER_ID><BUY_SELL>1</BUY_SELL><COMMODITY_ID>99202001</COMMODITY_ID><PRICE>1.57</PRICE><QTY>2</QTY><SETTLE_BASIS>1</SETTLE_BASIS><CLOSEMODE>0</CLOSEMODE><TIMEFLAG>0</TIMEFLAG><L_PRICE>0</L_PRICE><SESSION_ID>");
 		 strcat(send_str,retcode);
 		 strcat(send_str,"</SESSION_ID><BILLTYPE>0</BILLTYPE></REQ></GNNT>");
 		 printf("buy send_str:%s\n",send_str);
@@ -277,12 +277,12 @@ int _tmain(int argc, _TCHAR* argv[])
 		 while (1)
 		 {
 			
-			 if (GetCurrMSForMe()>(GetSetTimeForMe()-diff))
+			 if (GetCurrMSForMe()>(GetSetTimeForMe()+diff))
 			 {
 				 
-				 for (int i=0;i<5;i++)
+				 for (int i=0;i<2;i++)
 				 {
-					 printf("sussces:%lld\n",(GetSetTimeForMe()-diff));
+					 printf("sussces:%lld\n",(GetSetTimeForMe()+diff));
 					 send(sclient, send_str, strlen(send_str),0); ///发送
 					 //if(strcmp(sendbuf,"exit\n")==0)
 					 //  break;
