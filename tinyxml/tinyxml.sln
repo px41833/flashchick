@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zhongwen", "..\zhongwen\zho
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hebei", "..\hebei\hebei\hebei.vcxproj", "{2D3B5DBD-68BD-42B1-B21F-4A7D9D090E83}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shangwen", "..\shangwen\shangwen\shangwen.vcxproj", "{28A02DE0-262E-4C4D-8582-9D55A5224EC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -49,6 +51,10 @@ Global
 		{2D3B5DBD-68BD-42B1-B21F-4A7D9D090E83}.Debug|Win32.Build.0 = Debug|Win32
 		{2D3B5DBD-68BD-42B1-B21F-4A7D9D090E83}.Release|Win32.ActiveCfg = Release|Win32
 		{2D3B5DBD-68BD-42B1-B21F-4A7D9D090E83}.Release|Win32.Build.0 = Release|Win32
+		{28A02DE0-262E-4C4D-8582-9D55A5224EC2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{28A02DE0-262E-4C4D-8582-9D55A5224EC2}.Debug|Win32.Build.0 = Debug|Win32
+		{28A02DE0-262E-4C4D-8582-9D55A5224EC2}.Release|Win32.ActiveCfg = Release|Win32
+		{28A02DE0-262E-4C4D-8582-9D55A5224EC2}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

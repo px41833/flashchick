@@ -1,0 +1,49 @@
+POST /common_front/checkneedless/user/logon/logon.action HTTP/1.1
+Content-Type: text/html
+Host: trade.shexch.com:9004
+Content-Length: 281
+Expect: 100-continue
+Connection: Keep-Alive
+
+HTTP/1.1 100 Continue
+
+<?xml version="1.0" encoding="gb2312"?><GNNT><REQ name="logon"><USER_ID>360800116</USER_ID><PASSWORD>418331101</PASSWORD><REGISTER_WORD>2016092622133342736080011678659.09086094305</REGISTER_WORD><VERSIONINFO></VERSIONINFO><LA>0</LA><L_M></L_M><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Set-Cookie: JSESSIONID=6377950EF381BA958A2C75F7DF465D38; Path=/common_front
+Content-Type: text/html;charset=GBK
+Content-Language: zh-CN
+Content-Length: 384
+Date: Mon, 26 Sep 2016 14:16:06 GMT
+
+<?xml version="1.0" encoding="GB2312"?><GNNT><REP name="logon"><RESULT><RETCODE>7411976753698018519</RETCODE><MESSAGE></MESSAGE><MODULE_ID>99</MODULE_ID><LAST_TIME>2016-09-26 22:16:03</LAST_TIME><LAST_IP>183.60.230.8</LAST_IP><CHG_PWD>2</CHG_PWD><NAME>360800116</NAME><RANDOM_KEY>2016092622160669236080011618977.77489757808</RANDOM_KEY><USERID>360800116</USERID></RESULT></REP></GNNT>POST /common_front/checkneedless/user/logon/logon.action HTTP/1.1
+Content-Type: text/html
+Host: trade.shexch.com:9004
+Cookie: JSESSIONID=6377950EF381BA958A2C75F7DF465D38
+Content-Length: 230
+Expect: 100-continue
+
+HTTP/1.1 100 Continue
+
+<?xml version="1.0" encoding="gb2312"?><GNNT><REQ name="check_user"><USER_ID>360800116</USER_ID><SESSION_ID>7411976753698018519</SESSION_ID><MODULE_ID>99</MODULE_ID><F_LOGONTYPE></F_LOGONTYPE><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Language: zh-CN
+Content-Length: 159
+Date: Mon, 26 Sep 2016 14:16:07 GMT
+
+<?xml version="1.0" encoding="GBK"?><GNNT><REP name="check_user"><RESULT><RETCODE>0</RETCODE><MESSAGE></MESSAGE><MODULE_ID>99</MODULE_ID></RESULT></REP></GNNT>POST /common_front/checkneedless/user/logon/logon.action HTTP/1.1
+Content-Type: text/html
+Host: trade.shexch.com:9004
+Cookie: JSESSIONID=6377950EF381BA958A2C75F7DF465D38
+Content-Length: 254
+Expect: 100-continue
+
+HTTP/1.1 100 Continue
+
+<?xml version="1.0" encoding="gb2312"?><GNNT><REQ name="sys_time_query"><USER_ID>360800116</USER_ID><LAST_ID>0</LAST_ID><TD_CNT>-1</TD_CNT><SESSION_ID>7411976753698018519</SESSION_ID><CU_LG>1</CU_LG><UT>0</UT><LAST_TRADE_ID>0</LAST_TRADE_ID></REQ></GNNT>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=GBK
+Content-Language: zh-CN
+Content-Length: 0
+Date: Mon, 26 Sep 2016 14:16:07 GMT
+
