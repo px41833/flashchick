@@ -73,6 +73,8 @@ void ThreadFuncSycTime(LPVOID lpParameter)
 
 	//初始化发送信息
 	char send_str[2048] = {0};
+	while(1)
+	{
 	memset(sendbuf, 0, sizeof(sendbuf));
 	memset(recvbuf, 0, sizeof(recvbuf));
 	memset(send_str, 0, sizeof(send_str));
@@ -97,8 +99,7 @@ void ThreadFuncSycTime(LPVOID lpParameter)
 	SYSTEMTIME st;
 
 	// CString strDate,strTime;
-	while(1)
-	{
+
 
 		send(sclient, send_str, strlen(send_str),0); ///发送
 
@@ -116,8 +117,35 @@ void ThreadFuncSycTime(LPVOID lpParameter)
 		diff=GetCurrMSForMe()-timea;
 		printf("\r\n settime:%lld\n",GetSetTimeForMe());
 		printf("\r\ndiff time:%ld\n",diff);
+		
+
+		memset(sendbuf, 0, sizeof(sendbuf));
+		memset(recvbuf, 0, sizeof(recvbuf));
+		memset(send_str, 0, sizeof(send_str));
+
+		//头信息
+		strcat(send_str, "POST ");
+		strcat(send_str, api);
+		strcat(send_str, " HTTP/1.1\r\n");
+		strcat(send_str, "Content-Type: application/x-www-form-urlencoded\r\n");
+		strcat(send_str, "Host: ");
+		strcat(send_str, hostname);
+		strcat(send_str, "\r\n");
+		strcat(send_str, "Content-Length:201\r\n");
+		//strcat(send_str, "Expect: 100-continue\r\n");
+		strcat(send_str, "\r\n");
+
+		strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"commodity_data_query\"><USER_ID>1299906727</USER_ID><COMMODITY_ID>99600001</COMMODITY_ID><SESSION_ID>");
+		strcat(send_str,retcode);
+		strcat(send_str,"</SESSION_ID></REQ></GNNT>");
+
+		
+	printf("get zhi shusend_str:%s\n",send_str);
+		send(sclient, send_str, strlen(send_str),0); ///发送
+
+		recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
+		fputs(recvbuf, stdout);
 		Sleep(5*1000);
-	
 	}
 }
 int _tmain(int argc, _TCHAR* argv[])
@@ -133,13 +161,13 @@ int _tmain(int argc, _TCHAR* argv[])
 		std::cin>>month>>day>>hour>>mintue;
 		cout<<"time:" <<month<<' '<<day<<' '<<hour<<' '<<mintue<<endl;
 
-		/*char ybcode[10];
-		int   count=0;
+		char ybcode[10];
+		char   count[10];
 		char ybsale[10];
 		cout<<"请输入购买的邮票:代码 数量 价格";
 		cout<<endl;
 		std::cin>>ybcode>>count>>ybsale;
-		cout<<"ybcode:" <<ybcode<<' '<<count<<' '<<ybsale<<endl;*/
+		cout<<"ybcode:" <<ybcode<<' '<<count<<' '<<ybsale<<endl;
 
 		sclient = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if(sclient == INVALID_SOCKET)
@@ -265,21 +293,34 @@ int _tmain(int argc, _TCHAR* argv[])
 		 strcat(send_str, "Host: ");
 		 strcat(send_str, hostname);
 		 strcat(send_str, "\r\n");
+		
+
+		 char tmpstr[1024];
+		 memset(tmpstr, 0, sizeof(tmpstr));
+		 strcat(tmpstr, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"order\"><USER_ID>1299906727</USER_ID><CUSTOMER_ID>129990672700</CUSTOMER_ID><BUY_SELL>1</BUY_SELL><COMMODITY_ID>99");
+		 strcat(tmpstr,ybcode);
+		 strcat(tmpstr,"</COMMODITY_ID><PRICE>");
+		 strcat(tmpstr,ybsale);
+		 strcat(tmpstr,"</PRICE><QTY>");
+		  strcat(tmpstr,count);
+		  strcat(tmpstr,"</QTY><SETTLE_BASIS>1</SETTLE_BASIS><CLOSEMODE>0</CLOSEMODE><TIMEFLAG>0</TIMEFLAG><L_PRICE>0</L_PRICE><SESSION_ID>");
+			 strcat(tmpstr,retcode);
+		 strcat(tmpstr,"</SESSION_ID><BILLTYPE>0</BILLTYPE></REQ></GNNT>");
+
 		 strcat(send_str, "Content-Length:397\r\n");
 		 //strcat(send_str, "Expect: 100-continue\r\n");
 		 strcat(send_str, "Connection: Keep-Alive\r\n\r\n");
-
-		 strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"order\"><USER_ID>1299906727</USER_ID><CUSTOMER_ID>129990672700</CUSTOMER_ID><BUY_SELL>1</BUY_SELL><COMMODITY_ID>99600030</COMMODITY_ID><PRICE>44.03</PRICE><QTY>2</QTY><SETTLE_BASIS>1</SETTLE_BASIS><CLOSEMODE>0</CLOSEMODE><TIMEFLAG>0</TIMEFLAG><L_PRICE>0</L_PRICE><SESSION_ID>");
-		 strcat(send_str,retcode);
-		 strcat(send_str,"</SESSION_ID><BILLTYPE>0</BILLTYPE></REQ></GNNT>");
-		 printf("buy send_str:%s\n",send_str);
+		 strcat(send_str,tmpstr);
+		 printf("~~~~~~~~buy send_str:%s,tmpstr:%d\n",send_str,strlen(tmpstr));
 
 		 while (1)
 		 {
 			
 			 if (GetCurrMSForMe()>(GetSetTimeForMe()+diff))
 			 {
-				 
+				// int nNetTimeout=1000;//1秒
+			//	int flaglen = sizeof(nNetTimeout);  
+				// setsockopt(sclient, SOL_SOCKET,SO_RCVTIMEO, (char *)&nNetTimeout,flaglen);
 				 for (int i=0;i<2;i++)
 				 {
 					 printf("sussces:%lld\n",(GetSetTimeForMe()+diff));
