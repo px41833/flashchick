@@ -94,15 +94,31 @@ void ThreadFuncSycTime(LPVOID lpParameter)
 	strcat(send_str,retcode);
 	strcat(send_str,"</SESSION_ID><CU_LG>1</CU_LG></REQ></GNNT>");
 
-	printf("!!!!!!!!!!4 step syn time!!!!!!!!!!!!!send_str:%s\n",send_str);
+	//printf("!!!!!!!!!!4 step syn time!!!!!!!!!!!!!send_str:%s\n",send_str);
 	SYSTEMTIME st;
 
-	// CString strDate,strTime;
+	//数据同步
+		//头信息
+		strcat(sendbuf, "POST ");
+		strcat(sendbuf, api);
+		strcat(sendbuf, " HTTP/1.1\r\n");
+		strcat(sendbuf, "Content-Type: application/x-www-form-urlencoded\r\n");
+		strcat(sendbuf, "Host: ");
+		strcat(sendbuf, hostname);
+		strcat(sendbuf, "\r\n");
+		strcat(sendbuf, "Content-Length:201\r\n");
+		//strcat(send_str, "Expect: 100-continue\r\n");
+		strcat(sendbuf, "\r\n");
+
+		strcat(sendbuf, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"commodity_data_query\"><USER_ID>1299906727</USER_ID><COMMODITY_ID>99600001</COMMODITY_ID><SESSION_ID>");
+		strcat(sendbuf,retcode);
+		strcat(sendbuf,"</SESSION_ID></REQ></GNNT>");
+	
 
 	while(1)
 	{
 		send(sclient, send_str, strlen(send_str),0); ///发送
-
+		memset(recvbuf, 0, sizeof(recvbuf));
 		recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
 		fputs(recvbuf, stdout);
 
@@ -110,41 +126,21 @@ void ThreadFuncSycTime(LPVOID lpParameter)
 		char *end=strstr(recvbuf,"</TV_U>");
 		memset(sertime, 0, sizeof(sertime));
 		memcpy(sertime,start+sizeof("<TV_U>")-1,end-start-sizeof("<TV_U>")+1);
-		printf("\nsertime:%s\n",sertime);
+		//printf("\nsertime:%s\n",sertime);
 		LONGLONG timea;
 		sscanf(sertime,"%lld",&timea);
 		//printf("\nsertimelong:%lld\n",timea);
 		diff=GetCurrMSForMe()-timea;
-		printf("\r\n settime:%lld\n",GetSetTimeForMe());
+		//printf("\r\n settime:%lld\n",GetSetTimeForMe());
 		printf("\r\ndiff time:%ld\n",diff);
 		
 
-	//	memset(sendbuf, 0, sizeof(sendbuf));
-	//	memset(recvbuf, 0, sizeof(recvbuf));
-	//	memset(send_str, 0, sizeof(send_str));
-
-	//	//头信息
-	//	strcat(send_str, "POST ");
-	//	strcat(send_str, api);
-	//	strcat(send_str, " HTTP/1.1\r\n");
-	//	strcat(send_str, "Content-Type: application/x-www-form-urlencoded\r\n");
-	//	strcat(send_str, "Host: ");
-	//	strcat(send_str, hostname);
-	//	strcat(send_str, "\r\n");
-	//	strcat(send_str, "Content-Length:201\r\n");
-	//	//strcat(send_str, "Expect: 100-continue\r\n");
-	//	strcat(send_str, "\r\n");
-
-	//	strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"commodity_data_query\"><USER_ID>1299906727</USER_ID><COMMODITY_ID>99600001</COMMODITY_ID><SESSION_ID>");
-	//	strcat(send_str,retcode);
-	//	strcat(send_str,"</SESSION_ID></REQ></GNNT>");
-
-	//	
-	//printf("get zhi shusend_str:%s\n",send_str);
-	//	send(sclient, send_str, strlen(send_str),0); ///发送
-
-	//	recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
-	//	fputs(recvbuf, stdout);
+	     Sleep(1000);
+		 //printf("sendbuf:%s\n",sendbuf);
+		send(sclient, sendbuf, strlen(sendbuf),0); ///发送
+		memset(recvbuf, 0, sizeof(recvbuf));
+		recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
+		fputs(recvbuf, stdout);
 		Sleep(5*1000);
 	}
 }
