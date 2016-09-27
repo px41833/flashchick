@@ -299,14 +299,14 @@ int _tmain(int argc, _TCHAR* argv[])
 			 if (GetCurrMSForMe()>(GetSetTimeForMe()+diff))
 			 {
 				 
-				 for (int i=0;i<2;i++)
+				 for (int i=0;i<5;i++)
 				 {
 					 printf("sussces:%lld\n",(GetSetTimeForMe()+diff));
 					 send(sclient, send_str, strlen(send_str),0); ///发送
 					 //if(strcmp(sendbuf,"exit\n")==0)
 					 //  break;
-					 recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
-					 fputs(recvbuf, stdout);
+					recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
+					fputs(recvbuf, stdout);
 				 }
 				 //break;
 				 TerminateThread(hThread,0);

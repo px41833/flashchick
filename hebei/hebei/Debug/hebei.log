@@ -1,9 +1,12 @@
-﻿生成启动时间为 2016/9/26 17:57:28。
-     1>项目“C:\Users\pangxin\Desktop\others\交易\testybk\hebei\hebei\hebei.vcxproj”在节点 2 上(build 个目标)。
-     1>InitializeBuildStatus:
+﻿生成启动时间为 2016/9/27 9:35:42。
+     1>项目“C:\Users\pangxin\Desktop\others\交易\testybk\hebei\hebei\hebei.vcxproj”在节点 2 上(rebuild 个目标)。
+     1>_PrepareForClean:
+         正在删除文件“Debug\hebei.lastbuildstate”。
+       InitializeBuildStatus:
          正在创建“Debug\hebei.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
-         所有输出均为最新。
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\hebei.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
          D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\hebei.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt hebei.cpp
          hebei.cpp
      1>c:\users\pangxin\desktop\others\交易\testybk\hebei\hebei\hebei.cpp(83): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
@@ -141,22 +144,25 @@
      1>c:\users\pangxin\desktop\others\交易\testybk\hebei\hebei\hebei.cpp(313): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : 参见“strcat”的声明
        ManifestResourceCompile:
-         所有输出均为最新。
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\hebei.exe.embed.manifest.res" Debug\hebei_manifest.rc 
        Link:
          D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Debug\hebei.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\hebei.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Debug\hebei.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Debug\hebei.lib" /MACHINE:X86 Debug\hebei.exe.embed.manifest.res
          Debug\hebei.obj
          Debug\stdafx.obj
        Manifest:
+         正在删除文件“Debug\hebei.exe.embed.manifest”。
          C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\hebei.exe.embed.manifest" /manifest Debug\hebei.exe.intermediate.manifest
-         所有输出均为最新。
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\hebei.exe.embed.manifest.res" Debug\hebei_manifest.rc 
        LinkEmbedManifest:
-         所有输出均为最新。
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Debug\hebei.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\hebei.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Debug\hebei.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Debug\hebei.lib" /MACHINE:X86 Debug\hebei.exe.embed.manifest.res
+         Debug\hebei.obj
+         Debug\stdafx.obj
          hebei.vcxproj -> C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Debug\hebei.exe
        FinalizeBuildStatus:
          正在删除文件“Debug\hebei.unsuccessfulbuild”。
          正在对“Debug\hebei.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“C:\Users\pangxin\Desktop\others\交易\testybk\hebei\hebei\hebei.vcxproj”(build 个目标)的操作。
+     1>已完成生成项目“C:\Users\pangxin\Desktop\others\交易\testybk\hebei\hebei\hebei.vcxproj”(rebuild 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:01.91
+已用时间 00:00:06.24

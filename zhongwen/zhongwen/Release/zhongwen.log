@@ -1,5 +1,5 @@
-﻿生成启动时间为 2016/9/26 21:31:37。
-     1>项目“D:\ybk\devlop\zhongwen\zhongwen\zhongwen.vcxproj”在节点 2 上(build 个目标)。
+﻿生成启动时间为 2016/9/27 10:31:45。
+     1>项目“C:\Users\pangxin\Desktop\others\交易\testybk\zhongwen\zhongwen\zhongwen.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
          正在创建“Release\zhongwen.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
@@ -115,18 +115,18 @@
      1>zhongwen.cpp(294): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  D:\Program Files\Microsoft Visual Studio 10.0\VC\include\string.h(110) : 参见“strcat”的声明
        Link:
-         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\ybk\devlop\tinyxml\Release\zhongwen.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\zhongwen.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\ybk\devlop\tinyxml\Release\zhongwen.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\ybk\devlop\tinyxml\Release\zhongwen.lib" /MACHINE:X86 Release\stdafx.obj
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Release\zhongwen.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\zhongwen.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Release\zhongwen.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Release\zhongwen.lib" /MACHINE:X86 Release\stdafx.obj
          Release\zhongwen.obj
          正在生成代码
          已完成代码的生成
-         zhongwen.vcxproj -> D:\ybk\devlop\tinyxml\Release\zhongwen.exe
+         zhongwen.vcxproj -> C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Release\zhongwen.exe
        Manifest:
-         c:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\ybk\devlop\tinyxml\Release\zhongwen.exe;#1" /manifest Release\zhongwen.exe.intermediate.manifest
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\pangxin\Desktop\others\交易\testybk\tinyxml\Release\zhongwen.exe;#1" /manifest Release\zhongwen.exe.intermediate.manifest
        FinalizeBuildStatus:
          正在删除文件“Release\zhongwen.unsuccessfulbuild”。
          正在对“Release\zhongwen.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“D:\ybk\devlop\zhongwen\zhongwen\zhongwen.vcxproj”(build 个目标)的操作。
+     1>已完成生成项目“C:\Users\pangxin\Desktop\others\交易\testybk\zhongwen\zhongwen\zhongwen.vcxproj”(build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:05.97
+已用时间 00:00:03.65

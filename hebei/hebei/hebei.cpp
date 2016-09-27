@@ -73,8 +73,7 @@ void ThreadFuncSycTime(LPVOID lpParameter)
 
 	//初始化发送信息
 	char send_str[2048] = {0};
-	while(1)
-	{
+
 	memset(sendbuf, 0, sizeof(sendbuf));
 	memset(recvbuf, 0, sizeof(recvbuf));
 	memset(send_str, 0, sizeof(send_str));
@@ -100,7 +99,8 @@ void ThreadFuncSycTime(LPVOID lpParameter)
 
 	// CString strDate,strTime;
 
-
+	while(1)
+	{
 		send(sclient, send_str, strlen(send_str),0); ///发送
 
 		recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
@@ -119,32 +119,32 @@ void ThreadFuncSycTime(LPVOID lpParameter)
 		printf("\r\ndiff time:%ld\n",diff);
 		
 
-		memset(sendbuf, 0, sizeof(sendbuf));
-		memset(recvbuf, 0, sizeof(recvbuf));
-		memset(send_str, 0, sizeof(send_str));
+	//	memset(sendbuf, 0, sizeof(sendbuf));
+	//	memset(recvbuf, 0, sizeof(recvbuf));
+	//	memset(send_str, 0, sizeof(send_str));
 
-		//头信息
-		strcat(send_str, "POST ");
-		strcat(send_str, api);
-		strcat(send_str, " HTTP/1.1\r\n");
-		strcat(send_str, "Content-Type: application/x-www-form-urlencoded\r\n");
-		strcat(send_str, "Host: ");
-		strcat(send_str, hostname);
-		strcat(send_str, "\r\n");
-		strcat(send_str, "Content-Length:201\r\n");
-		//strcat(send_str, "Expect: 100-continue\r\n");
-		strcat(send_str, "\r\n");
+	//	//头信息
+	//	strcat(send_str, "POST ");
+	//	strcat(send_str, api);
+	//	strcat(send_str, " HTTP/1.1\r\n");
+	//	strcat(send_str, "Content-Type: application/x-www-form-urlencoded\r\n");
+	//	strcat(send_str, "Host: ");
+	//	strcat(send_str, hostname);
+	//	strcat(send_str, "\r\n");
+	//	strcat(send_str, "Content-Length:201\r\n");
+	//	//strcat(send_str, "Expect: 100-continue\r\n");
+	//	strcat(send_str, "\r\n");
 
-		strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"commodity_data_query\"><USER_ID>1299906727</USER_ID><COMMODITY_ID>99600001</COMMODITY_ID><SESSION_ID>");
-		strcat(send_str,retcode);
-		strcat(send_str,"</SESSION_ID></REQ></GNNT>");
+	//	strcat(send_str, "<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"commodity_data_query\"><USER_ID>1299906727</USER_ID><COMMODITY_ID>99600001</COMMODITY_ID><SESSION_ID>");
+	//	strcat(send_str,retcode);
+	//	strcat(send_str,"</SESSION_ID></REQ></GNNT>");
 
-		
-	printf("get zhi shusend_str:%s\n",send_str);
-		send(sclient, send_str, strlen(send_str),0); ///发送
+	//	
+	//printf("get zhi shusend_str:%s\n",send_str);
+	//	send(sclient, send_str, strlen(send_str),0); ///发送
 
-		recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
-		fputs(recvbuf, stdout);
+	//	recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
+	//	fputs(recvbuf, stdout);
 		Sleep(5*1000);
 	}
 }
@@ -307,7 +307,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			 strcat(tmpstr,retcode);
 		 strcat(tmpstr,"</SESSION_ID><BILLTYPE>0</BILLTYPE></REQ></GNNT>");
 
-		 strcat(send_str, "Content-Length:397\r\n");
+		 sprintf_s(send_str, "%sContent-Length:%d\r\n",send_str,strlen(tmpstr));
 		 //strcat(send_str, "Expect: 100-continue\r\n");
 		 strcat(send_str, "Connection: Keep-Alive\r\n\r\n");
 		 strcat(send_str,tmpstr);
@@ -321,7 +321,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				// int nNetTimeout=1000;//1秒
 			//	int flaglen = sizeof(nNetTimeout);  
 				// setsockopt(sclient, SOL_SOCKET,SO_RCVTIMEO, (char *)&nNetTimeout,flaglen);
-				 for (int i=0;i<2;i++)
+				 for (int i=0;i<5;i++)
 				 {
 					 printf("sussces:%lld\n",(GetSetTimeForMe()+diff));
 					 send(sclient, send_str, strlen(send_str),0); ///发送
