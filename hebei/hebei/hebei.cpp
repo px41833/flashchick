@@ -317,7 +317,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				// int nNetTimeout=1000;//1√Î
 			//	int flaglen = sizeof(nNetTimeout);  
 				// setsockopt(sclient, SOL_SOCKET,SO_RCVTIMEO, (char *)&nNetTimeout,flaglen);
-				 for (int i=0;i<5;i++)
+				 for (int i=0;i<8;i++)
 				 {
 					 printf("sussces:%lld\n",(GetSetTimeForMe()+diff));
 					 send(sclient, send_str, strlen(send_str),0); ///∑¢ÀÕ
