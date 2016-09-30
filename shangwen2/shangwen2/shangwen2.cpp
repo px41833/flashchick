@@ -296,14 +296,15 @@ int _tmain(int argc, _TCHAR* argv[])
 			 if (GetCurrMSForMe()>(GetSetTimeForMe()+diff))
 			 {
 				 
-				 for (int i=0;i<5;i++)
+				 for (int i=0;i<10;i++)
 				 {
-					 printf("买 %d 次\n",i);
+					 printf("\n买 %d 次\n",i);
 					 send(sclient, send_str, strlen(send_str),0); ///发送
 					 //if(strcmp(sendbuf,"exit\n")==0)
 					 //  break;
 					recv(sclient, recvbuf, sizeof(recvbuf),0); ///接收
-					//fputs(recvbuf, stdout);
+					fputs(recvbuf, stdout);
+					Sleep(20);
 				 }
 				 //break;
 				 TerminateThread(hThread,0);
