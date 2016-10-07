@@ -239,6 +239,11 @@ BOOL CybkDlg::OnInitDialog()
 	SetDlgItemInt(IDC_EDIT_OPENING_MINUT,30);
 	SetDlgItemInt(IDC_EDIT_OPENING_SECOND,0);
 	SetDlgItemInt(IDC_EDIT_OPENING_MIL,0);
+
+	//对变量初始化
+	 time_localcurrent=0;
+	 settimediff=0;
+	 autosynctimediff=0;
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -295,12 +300,24 @@ void ThreadFuncSyncCommit(LPVOID lpParameter)
    ClientNet *ybkclient= (ClientNet *)lpParameter;
    CString logon_s;
    ybkclient->BuildXmlData_GetFirmInfo(logon_s,0);
+   DWORD tick=0,tick1=0;
+   time_t tick_t=0;
+   CString synctime;
    while(ybkclient->RunFlag)
    {
-	   TRACE("test run\n");
-	   Sleep(4*500);
-	   CString synctime;
-	   ybkclient->BuildXmlData_GetSvnTime(synctime,0);
+	   tick=GetTickCount();
+	  //time_t  tick_t=time();
+	  // Sleep(4*500);
+	   if(tick!=tick1)
+	   { 
+		   if (tick%3000==0)
+		   {
+			   TRACE("test run\n");
+			   ybkclient->BuildXmlData_GetSvnTime(synctime,0);
+		   }
+		   tick1=tick;
+	   }
+	   
 		//ybkclient->RunTimeCommit();
    }
    
@@ -378,15 +395,17 @@ void ThreadFunc(LPVOID lpParameter)
 				sSubStr.Empty();
 				sSubStr =GetStrFromS1ToS2Ex(procstr,_T("<TV_U>"),_T("</TV_U>"));
 				
-				LONGLONG timea=0;
+				LONGLONG timea=0,local_t=GetCurrMSForMe();
 				//sscanf_s((char *)msg.wParam,"%lld",&timea);
 				USES_CONVERSION;
 				sscanf_s((const char*)T2A(sSubStr),"%lld",&timea);
-			
-
+			    if(ybkdlg->autosynctimediff==0)
+				ybkdlg->autosynctimediff=local_t-timea;
+				else
+                ybkdlg->autosynctimediff=(local_t-timea)>ybkdlg->autosynctimediff?ybkdlg->autosynctimediff:(local_t-timea);
 			//char timechuo[128];
 			//char startstr[]="<TV_U>";
-			//TRACE("ss:%d\n",sizeof(startstr));
+			TRACE("ss:%d,%d\n",ybkdlg->autosynctimediff,(local_t-timea));
 			//GetStrFromS1ToS2((char *)msg.wParam,startstr,"</TV_U>",timechuo);
 			//LONGLONG timea=0;
 			////sscanf_s((char *)msg.wParam,"%lld",&timea);
@@ -530,6 +549,9 @@ void CybkDlg::OnBnClickedButtonStartCommit()
 	UINT m_hour=GetDlgItemInt(IDC_EDIT_OPENING_HOUR,NULL,FALSE);
 	UINT m_minute=GetDlgItemInt(IDC_EDIT_OPENING_MINUT,NULL,FALSE);
 	UINT m_second=GetDlgItemInt(IDC_EDIT_OPENING_SECOND,NULL,FALSE);
-	settimediff=GetDlgItemInt(IDC_EDIT_OPENING_MIL,NULL,FALSE);
+	settimediff=GetDlgItemInt(IDC_EDIT_OPENING_MIL,NULL,TRUE);
+	LONGLONG timediff=67985;
+	TRACE("diff:%lld\n",timediff+settimediff);
+	//LONGLONG timediff=GetDlgItemInt(IDC_EDIT_OPENING_MIL,NULL,TRUE);
 	time_localcurrent=GetSetTimeForMe(m_day,m_hour,m_minute,m_second);
 }

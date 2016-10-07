@@ -45,5 +45,6 @@ public:
 	afx_msg void OnEnKillfocusEditList();
 	afx_msg void OnBnClickedButtonStartCommit();
 	time_t time_localcurrent;
-	time_t settimediff;
+	int settimediff;
+	time_t autosynctimediff;
 };
