@@ -4,6 +4,7 @@
 
 #pragma once
 #include "afxcmn.h"
+#include "afxwin.h"
 
 
 // CtestlistDlg ¶Ô»°¿ò
@@ -33,4 +34,9 @@ protected:
 public:
 	CListCtrl m_programLangList;
 	afx_msg void OnNMClickProgramLangList(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnNMDblclkProgramLangList(NMHDR *pNMHDR, LRESULT *pResult);
+	CEdit m_edit;
+	afx_msg void OnEnKillfocusEdit1();
+	int m_Row;
+	int m_Col;
 };

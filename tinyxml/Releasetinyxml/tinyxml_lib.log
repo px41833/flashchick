@@ -1,0 +1,25 @@
+﻿生成启动时间为 2016/10/2 21:59:59。
+     1>项目“D:\ybk\devlop\tinyxml\tinyxml_lib.vcxproj”在节点 3 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“D:\ybk\devlop\tinyxml\Releasetinyxml\tinyxml.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Ob1 /Oy- /D WIN32 /D NDEBUG /D _LIB /D _VC80_UPGRADE=0x0600 /D _MBCS /GF /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"D:\ybk\devlop\tinyxml\Releasetinyxml\\" /Fd"D:\ybk\devlop\tinyxml\Releasetinyxml\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt tinystr.cpp tinyxml.cpp tinyxmlerror.cpp tinyxmlparser.cpp
+         tinystr.cpp
+         tinyxml.cpp
+         tinyxmlerror.cpp
+         tinyxmlparser.cpp
+         正在生成代码...
+       Lib:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"D:\ybk\devlop\tinyxml\Releasetinyxml\tinyxml.lib" /NOLOGO D:\ybk\devlop\tinyxml\Releasetinyxml\tinystr.obj
+         D:\ybk\devlop\tinyxml\Releasetinyxml\tinyxml.obj
+         D:\ybk\devlop\tinyxml\Releasetinyxml\tinyxmlerror.obj
+         D:\ybk\devlop\tinyxml\Releasetinyxml\tinyxmlparser.obj
+         tinyxml_lib.vcxproj -> D:\ybk\devlop\tinyxml\Releasetinyxml\tinyxml.lib
+       FinalizeBuildStatus:
+         正在删除文件“D:\ybk\devlop\tinyxml\Releasetinyxml\tinyxml.unsuccessfulbuild”。
+         正在对“D:\ybk\devlop\tinyxml\Releasetinyxml\tinyxml.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\ybk\devlop\tinyxml\tinyxml_lib.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:07.59

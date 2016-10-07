@@ -1,0 +1,40 @@
+﻿生成启动时间为 2016/10/3 11:02:41。
+     1>项目“D:\ybk\devlop\tinyxml\tinyXmlTest.vcxproj”在节点 3 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“D:\ybk\devlop\tinyxml\ReleasetinyXmlTest\tinyXmlTest.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         所有输出均为最新。
+       Link:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\ybk\devlop\tinyxml\ReleasetinyXmlTest\tinyXmlTest.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"D:\ybk\devlop\tinyxml\ReleasetinyXmlTest\tinyXmlTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"D:\ybk\devlop\tinyxml\ReleasetinyXmlTest\tinyXmlTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"D:\ybk\devlop\tinyxml\ReleasetinyXmlTest\tinyXmlTest.lib" /MACHINE:X86 D:\ybk\devlop\tinyxml\ReleasetinyXmlTest\xmltest.obj
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "private: static struct TiXmlString::Rep TiXmlString::nullrep_" (?nullrep_@TiXmlString@@0URep@1@A)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "private: static bool TiXmlBase::condenseWhiteSpace" (?condenseWhiteSpace@TiXmlBase@@0_NA)
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: class TiXmlElement const * __thiscall TiXmlNode::FirstChildElement(void)const " (?FirstChildElement@TiXmlNode@@QBEPBVTiXmlElement@@XZ)，该符号在函数 "public: class TiXmlElement * __thiscall TiXmlNode::FirstChildElement(void)" (?FirstChildElement@TiXmlNode@@QAEPAVTiXmlElement@@XZ) 中被引用
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: virtual __thiscall TiXmlNode::~TiXmlNode(void)" (??1TiXmlNode@@UAE@XZ)，该符号在函数 "public: virtual __thiscall TiXmlDocument::~TiXmlDocument(void)" (??1TiXmlDocument@@UAE@XZ) 中被引用
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual void __thiscall TiXmlDocument::Print(struct _iobuf *,int)const " (?Print@TiXmlDocument@@UBEXPAU_iobuf@@H@Z)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual char const * __thiscall TiXmlDocument::Parse(char const *,class TiXmlParsingData *,enum TiXmlEncoding)" (?Parse@TiXmlDocument@@UAEPBDPBDPAVTiXmlParsingData@@W4TiXmlEncoding@@@Z)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "protected: virtual class TiXmlNode * __thiscall TiXmlDocument::Clone(void)const " (?Clone@TiXmlDocument@@MBEPAVTiXmlNode@@XZ)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual bool __thiscall TiXmlDocument::Accept(class TiXmlVisitor *)const " (?Accept@TiXmlDocument@@UBE_NPAVTiXmlVisitor@@@Z)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual bool __thiscall TiXmlPrinter::VisitEnter(class TiXmlElement const &,class TiXmlAttribute const *)" (?VisitEnter@TiXmlPrinter@@UAE_NABVTiXmlElement@@PBVTiXmlAttribute@@@Z)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual bool __thiscall TiXmlPrinter::VisitEnter(class TiXmlDocument const &)" (?VisitEnter@TiXmlPrinter@@UAE_NABVTiXmlDocument@@@Z)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual bool __thiscall TiXmlPrinter::VisitExit(class TiXmlElement const &)" (?VisitExit@TiXmlPrinter@@UAE_NABVTiXmlElement@@@Z)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual bool __thiscall TiXmlPrinter::VisitExit(class TiXmlDocument const &)" (?VisitExit@TiXmlPrinter@@UAE_NABVTiXmlDocument@@@Z)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual bool __thiscall TiXmlPrinter::Visit(class TiXmlUnknown const &)" (?Visit@TiXmlPrinter@@UAE_NABVTiXmlUnknown@@@Z)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual bool __thiscall TiXmlPrinter::Visit(class TiXmlComment const &)" (?Visit@TiXmlPrinter@@UAE_NABVTiXmlComment@@@Z)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual bool __thiscall TiXmlPrinter::Visit(class TiXmlText const &)" (?Visit@TiXmlPrinter@@UAE_NABVTiXmlText@@@Z)
+     1>xmltest.obj : error LNK2001: 无法解析的外部符号 "public: virtual bool __thiscall TiXmlPrinter::Visit(class TiXmlDeclaration const &)" (?Visit@TiXmlPrinter@@UAE_NABVTiXmlDeclaration@@@Z)
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: class TiXmlHandle __thiscall TiXmlHandle::FirstChildElement(char const *)const " (?FirstChildElement@TiXmlHandle@@QBE?AV1@PBD@Z)，该符号在函数 _main 中被引用
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: class TiXmlHandle __thiscall TiXmlHandle::Child(int)const " (?Child@TiXmlHandle@@QBE?AV1@H@Z)，该符号在函数 _main 中被引用
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: void __thiscall TiXmlNode::Clear(void)" (?Clear@TiXmlNode@@QAEXXZ)，该符号在函数 _main 中被引用
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: bool __thiscall TiXmlDocument::SaveFile(char const *)const " (?SaveFile@TiXmlDocument@@QBE_NPBD@Z)，该符号在函数 _main 中被引用
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: bool __thiscall TiXmlDocument::LoadFile(char const *,enum TiXmlEncoding)" (?LoadFile@TiXmlDocument@@QAE_NPBDW4TiXmlEncoding@@@Z)，该符号在函数 _main 中被引用
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: __thiscall TiXmlDocument::TiXmlDocument(void)" (??0TiXmlDocument@@QAE@XZ)，该符号在函数 _main 中被引用
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: char const * __thiscall TiXmlElement::Attribute(char const *)const " (?Attribute@TiXmlElement@@QBEPBDPBD@Z)，该符号在函数 _main 中被引用
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: bool __thiscall TiXmlDocument::LoadFile(enum TiXmlEncoding)" (?LoadFile@TiXmlDocument@@QAE_NW4TiXmlEncoding@@@Z)，该符号在函数 _main 中被引用
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: bool __thiscall TiXmlDocument::SaveFile(void)const " (?SaveFile@TiXmlDocument@@QBE_NXZ)，该符号在函数 _main 中被引用
+     1>xmltest.obj : error LNK2019: 无法解析的外部符号 "public: __thiscall TiXmlDocument::TiXmlDocument(char const *)" (??0TiXmlDocument@@QAE@PBD@Z)，该符号在函数 _main 中被引用
+     1>D:\ybk\devlop\tinyxml\ReleasetinyXmlTest\tinyXmlTest.exe : fatal error LNK1120: 26 个无法解析的外部命令
+     1>已完成生成项目“D:\ybk\devlop\tinyxml\tinyXmlTest.vcxproj”(build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.65

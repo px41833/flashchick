@@ -1,0 +1,28 @@
+﻿生成启动时间为 2016/10/3 23:48:10。
+     1>项目“D:\ybk\devlop\ybk\ybk\ybk.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Release\ybk.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         所有输出均为最新。
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\ybk.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ybkDlg.cpp
+         ybkDlg.cpp
+       ResourceCompile:
+         所有输出均为最新。
+       Link:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\ybk\devlop\tinyxml\Release\ybk.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"Release\ybk.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\ybk\devlop\tinyxml\Release\ybk.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\ybk\devlop\tinyxml\Release\ybk.lib" /MACHINE:X86 Release\ybk.res
+         Release\stdafx.obj
+         Release\ybk.obj
+         Release\ybkDlg.obj
+         正在生成代码
+         已完成代码的生成
+         ybk.vcxproj -> D:\ybk\devlop\tinyxml\Release\ybk.exe
+       Manifest:
+         c:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\ybk\devlop\tinyxml\Release\ybk.exe;#1" /manifest Release\ybk.exe.intermediate.manifest "D:\Program Files\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+       FinalizeBuildStatus:
+         正在删除文件“Release\ybk.unsuccessfulbuild”。
+         正在对“Release\ybk.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\ybk\devlop\ybk\ybk\ybk.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:16.66

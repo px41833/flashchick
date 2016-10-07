@@ -1,6 +1,8 @@
-﻿生成启动时间为 2016/9/30 0:20:50。
-     1>项目“D:\ybk\devp\testlist\testlist\testlist.vcxproj”在节点 2 上(rebuild 个目标)。
-     1>InitializeBuildStatus:
+﻿生成启动时间为 2016/9/30 22:41:52。
+     1>项目“D:\ybk\devlop\testlist\testlist\testlist.vcxproj”在节点 2 上(rebuild 个目标)。
+     1>_PrepareForClean:
+         正在删除文件“Release\testlist.lastbuildstate”。
+       InitializeBuildStatus:
          正在创建“Release\testlist.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
          D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Release\testlist.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
@@ -11,20 +13,20 @@
        ResourceCompile:
          c:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0804" /IRelease\ /nologo /fo"Release\testlist.res" testlist.rc 
        Link:
-         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\ybk\devp\tinyxml\Release\testlist.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"Release\testlist.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\ybk\devp\tinyxml\Release\testlist.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\ybk\devp\tinyxml\Release\testlist.lib" /MACHINE:X86 Release\testlist.res
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\ybk\devlop\tinyxml\Release\testlist.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"Release\testlist.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\ybk\devlop\tinyxml\Release\testlist.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\ybk\devlop\tinyxml\Release\testlist.lib" /MACHINE:X86 Release\testlist.res
          Release\stdafx.obj
          Release\testlist.obj
          Release\testlistDlg.obj
          正在生成代码
          已完成代码的生成
-         testlist.vcxproj -> D:\ybk\devp\tinyxml\Release\testlist.exe
+         testlist.vcxproj -> D:\ybk\devlop\tinyxml\Release\testlist.exe
        Manifest:
-         c:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\ybk\devp\tinyxml\Release\testlist.exe;#1" /manifest Release\testlist.exe.intermediate.manifest "D:\Program Files\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         c:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\ybk\devlop\tinyxml\Release\testlist.exe;#1" /manifest Release\testlist.exe.intermediate.manifest "D:\Program Files\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
        FinalizeBuildStatus:
          正在删除文件“Release\testlist.unsuccessfulbuild”。
          正在对“Release\testlist.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“D:\ybk\devp\testlist\testlist\testlist.vcxproj”(rebuild 个目标)的操作。
+     1>已完成生成项目“D:\ybk\devlop\testlist\testlist\testlist.vcxproj”(rebuild 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:23.90
+已用时间 00:00:21.50
