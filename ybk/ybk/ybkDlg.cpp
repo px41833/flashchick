@@ -9,6 +9,8 @@
 #include "ClientNet.h"
 #include "common.h"
 #include "addrlist.h"
+#include<vector>
+using namespace std;
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -229,7 +231,7 @@ BOOL CybkDlg::OnInitDialog()
 	m_BuySaleList.InsertItem(2,_T("3")); 
 	m_BuySaleList.InsertItem(3,_T("4")); 
 	m_BuySaleList.InsertItem(4,_T("5")); 
-	m_BuySaleList.InsertItem(5,_T("6"));
+	//m_BuySaleList.InsertItem(5,_T("6"));
 
 	/////////////////////////初始化打单时间///////////////////////
 	SYSTEMTIME tTime = {0};
@@ -540,7 +542,6 @@ void CybkDlg::OnEnKillfocusEditList()
 	}
 }
 
-
 void CybkDlg::OnBnClickedButtonStartCommit()
 {
 	// TODO: 在此添加控件通知处理程序代码
@@ -554,4 +555,18 @@ void CybkDlg::OnBnClickedButtonStartCommit()
 	TRACE("diff:%lld\n",timediff+settimediff);
 	//LONGLONG timediff=GetDlgItemInt(IDC_EDIT_OPENING_MIL,NULL,TRUE);
 	time_localcurrent=GetSetTimeForMe(m_day,m_hour,m_minute,m_second);
+	m_day=m_BuySaleList.GetItemCount();
+	TCHAR szBuf[1024];
+	CString sss;
+	LVITEM lvi;
+	lvi.iItem = 0;
+	lvi.iSubItem = 3;
+	lvi.mask = LVIF_TEXT;
+	lvi.pszText = szBuf;
+	lvi.cchTextMax = 1024;
+	m_BuySaleList.GetItem(&lvi);
+	sss=m_BuySaleList.GetItemText(0,3);
+	int columns = m_BuySaleList.GetHeaderCtrl()->GetItemCount();
+
+	vector<int> vec;
 }
