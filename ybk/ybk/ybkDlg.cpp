@@ -307,9 +307,14 @@ void ThreadFuncSyncCommit(LPVOID lpParameter)
    CString synctime;
    while(ybkclient->RunFlag)
    {
-	   tick=GetTickCount();
+	 
 	  //time_t  tick_t=time();
 	  // Sleep(4*500);
+	    if (GetCurrMSForMe()>(ybkclient->time_localcurrent+ybkclient->settimediff))
+		{
+
+		}
+	   tick=GetTickCount();
 	   if(tick!=tick1)
 	   { 
 		   if (tick%3000==0)
@@ -454,7 +459,20 @@ void ThreadFunc(LPVOID lpParameter)
 			CString  balance=GetStrFromS1ToS2Ex(procstr,_T("<JYSQY>"),_T("</JYSQY>"));
 			SetDlgItemText(ybkdlg->m_hWnd,IDC_EDIT_BALANCE,balance);
 		}
-		TRACE("1111111111111\n");
+		else if(msg.message == MESSAGE_ADD_YB_LIST)
+		{
+			YB_PARAM *yb=(YB_PARAM *)msg.wParam;
+			pfconnect->AddCommitList(*yb);
+			TRACE("1111111111111\n");
+		}
+		else if(msg.message == MESSAGE_SET_COMMIT_TIME)
+		{
+			time_t *settime=(time_t *)msg.wParam;
+			int isCommit=msg.lParam;
+			//pfconnect->AddCommitList(*yb);
+			TRACE("1111111111111\n");
+		}
+		
 	}
 	TRACE("2222222222222222\n");
 	}
@@ -555,18 +573,40 @@ void CybkDlg::OnBnClickedButtonStartCommit()
 	TRACE("diff:%lld\n",timediff+settimediff);
 	//LONGLONG timediff=GetDlgItemInt(IDC_EDIT_OPENING_MIL,NULL,TRUE);
 	time_localcurrent=GetSetTimeForMe(m_day,m_hour,m_minute,m_second);
-	m_day=m_BuySaleList.GetItemCount();
-	TCHAR szBuf[1024];
+	 PostThreadMessage(this->MainThreadID,MESSAGE_SET_COMMIT_TIME,(WPARAM )&time_localcurrent,TRUE);
+	 PostThreadMessage(this->MainThreadID,MESSAGE_SET_COMMIT_TIME_DIFF,(WPARAM )&settimediff,0);
+
+	 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	int irow=m_BuySaleList.GetItemCount();//行数
+	int columns = m_BuySaleList.GetHeaderCtrl()->GetItemCount();//列数
+	YB_PARAM  vec;
+	for (int i=0;i<irow;i++)  
+	{
+	   //for (int j=1;j<columns;j++)//第一列不要
+	   {
+		// memset(&vec,0,sizeof(YB_PARAM));
+		  // sss=m_BuySaleList.GetItemText(i,j);
+		    vec.yb_code = m_BuySaleList.GetItemText(i,1);
+			 vec.yb_sale = m_BuySaleList.GetItemText(i,3);
+			  vec.yb_price = m_BuySaleList.GetItemText(i,4);
+			   vec.yb_number = m_BuySaleList.GetItemText(i,5);
+			   if (vec.yb_code.GetLength()&&vec.yb_sale.GetLength()&&vec.yb_price.GetLength()&&vec.yb_number.GetLength())
+			   {
+				   PostThreadMessage(this->MainThreadID,MESSAGE_ADD_YB_LIST,(WPARAM )&vec,0);
+
+			   }
+	   }
+	}
+	/*TCHAR szBuf[1024];
 	CString sss;
 	LVITEM lvi;
 	lvi.iItem = 0;
-	lvi.iSubItem = 3;
+	lvi.iSubItem = 3;;
 	lvi.mask = LVIF_TEXT;
 	lvi.pszText = szBuf;
 	lvi.cchTextMax = 1024;
-	m_BuySaleList.GetItem(&lvi);
-	sss=m_BuySaleList.GetItemText(0,3);
-	int columns = m_BuySaleList.GetHeaderCtrl()->GetItemCount();
+	m_BuySaleList.GetItem(&lvi);*/
+	
 
-	vector<int> vec;
+	
 }

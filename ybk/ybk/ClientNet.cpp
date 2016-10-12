@@ -1,6 +1,8 @@
 #include "StdAfx.h"
-#include "ClientNet.h"
+#include <vector>
+using namespace std;
 #include "common.h"
+#include "ClientNet.h"
 
 ClientNet::ClientNet(void)
 {
@@ -14,6 +16,8 @@ ClientNet::ClientNet(CString accout,CString passwd ,CString ipaddr,CString port,
 	MainWinThreadID=threadid;
 	RunFlag=TRUE;
 	InitXmlData_Head();
+	ListCommit=FALSE;
+	yb_vec.clear();
 }
 
 ClientNet::~ClientNet(void)
@@ -246,4 +250,9 @@ void ClientNet::RunTimeCommit(void)
 		CString synctime;
 		BuildXmlData_GetSvnTime(synctime,0);
 	}
+}
+int ClientNet::AddCommitList(YB_PARAM ybk)
+{
+	yb_vec.push_back(ybk);
+	return TRUE;
 }
