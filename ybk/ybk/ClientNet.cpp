@@ -17,6 +17,9 @@ ClientNet::ClientNet(CString accout,CString passwd ,CString ipaddr,CString port,
 	RunFlag=TRUE;
 	InitXmlData_Head();
 	ListCommit=FALSE;
+	time_localcurrent=0;
+	settimediff=0;
+	cm_check=FALSE;
 	yb_vec.clear();
 }
 
@@ -53,12 +56,15 @@ void ThreadFuncRecv(LPVOID lpParameter)
     char buffer[1024]={0}; //256字节的接收缓冲区 
 	int ret,revlen=0; // return val 
 	char *revstart;
+	FD_ZERO(&fds); //每次循环都要清空集合，否则不能检测描述符变化 
+	u_long ul=1;
+	ioctlsocket(client->m_sock,FIONBIO,&ul);    //用非阻塞的连接
+	FD_SET(client->m_sock,&fds); //添加描述符 
     while(client->RunFlag) 
    { 
-        FD_ZERO(&fds); //每次循环都要清空集合，否则不能检测描述符变化 
-        FD_SET(client->m_sock,&fds); //添加描述符 
+        
         //maxfdp=sock>fp?sock+1:fp+1;    //描述符最大值加1 
-        ret=(select(NULL,&fds,NULL,NULL,NULL));   //select使用 
+        ret=(select(NULL,&fds,NULL,NULL,&timeout));   //select使用 
         if(ret>0)
         {
 			memset(buffer,0,sizeof(buffer));
@@ -109,6 +115,10 @@ void ThreadFuncRecv(LPVOID lpParameter)
 							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_FIRM_INFO,(WPARAM)revstart,0);
 							//TRACE(" sync time ret:%d\n",ret);
 						}
+					}
+					else
+					{
+						TRACE("~~error code0x%x\n",WSAGetLastError());
 					}
 					
 				}
@@ -241,6 +251,42 @@ CString ClientNet::BuildXmlData_GetFirmInfo(CString s,int len)
 
 	return s;
 }
+CString ClientNet::BuildXmlData_Holding(CString s,int len)
+{
+	CString logonstr,lenthstr;
+	logonstr.Empty();
+	logonstr ="<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"holding_query\"><USER_ID>";
+	logonstr +=LoginAccout;
+	logonstr +="</USER_ID><SESSION_ID>";
+	logonstr +=this->RetRandCode;
+	logonstr +="</SESSION_ID></REQ></GNNT>";
+	lenthstr.Format(_T("Content-Length:%d\r\n"),logonstr.GetLength());
+	lenthstr +="Connection: Keep-Alive\r\n\r\n";
+	s=XmlHead+lenthstr+logonstr;
+	USES_CONVERSION;
+	SendMsg((const char*)T2A(s),s.GetLength());
+
+	return s;
+}
+CString ClientNet::BuildXmlData_DataQuery(CString s,int len,CString querycode)
+{
+	CString logonstr,lenthstr;
+	logonstr.Empty();
+	logonstr ="<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"commodity_data_query\"><USER_ID>";
+	logonstr +=LoginAccout;
+	logonstr +="</USER_ID><COMMODITY_ID>";
+	logonstr +=querycode;
+	logonstr +="</COMMODITY_ID><SESSION_ID>";
+	logonstr +=this->RetRandCode;
+	logonstr +="</SESSION_ID></REQ></GNNT>";
+	lenthstr.Format(_T("Content-Length:%d\r\n"),logonstr.GetLength());
+	lenthstr +="Connection: Keep-Alive\r\n\r\n";
+	s=XmlHead+lenthstr+logonstr;
+	USES_CONVERSION;
+	SendMsg((const char*)T2A(s),s.GetLength());
+
+	return s;
+}
 void ClientNet::RunTimeCommit(void)
 {
 	while(RunFlag)
@@ -255,4 +301,20 @@ int ClientNet::AddCommitList(YB_PARAM ybk)
 {
 	yb_vec.push_back(ybk);
 	return TRUE;
+}
+int ClientNet::SetCommitTime(COM_TIME cmtime)
+{
+	cm_check=cmtime.com_check;
+	settimediff=cmtime.settimediff;
+	time_localcurrent=cmtime.time_localcurrent;
+    ListCommit=TRUE;
+	return TRUE;
+}
+void ClientNet::StartCommitList(void)
+{
+
+}
+int ClientNet::GetCommitListLen(void)
+{
+	return yb_vec.empty();
 }

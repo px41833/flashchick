@@ -243,9 +243,9 @@ BOOL CybkDlg::OnInitDialog()
 	SetDlgItemInt(IDC_EDIT_OPENING_MIL,0);
 
 	//对变量初始化
-	 time_localcurrent=0;
+	/* time_localcurrent=0;
 	 settimediff=0;
-	 autosynctimediff=0;
+	 autosynctimediff=0;*/
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -305,6 +305,7 @@ void ThreadFuncSyncCommit(LPVOID lpParameter)
    DWORD tick=0,tick1=0;
    time_t tick_t=0;
    CString synctime;
+   CString comcode("99600001");
    while(ybkclient->RunFlag)
    {
 	 
@@ -312,15 +313,27 @@ void ThreadFuncSyncCommit(LPVOID lpParameter)
 	  // Sleep(4*500);
 	    if (GetCurrMSForMe()>(ybkclient->time_localcurrent+ybkclient->settimediff))
 		{
-
+			if (ybkclient->GetCommitListLen()!=1)
+			{
+				TRACE("vector.....\n");
+			}
 		}
 	   tick=GetTickCount();
 	   if(tick!=tick1)
 	   { 
-		   if (tick%3000==0)
+		   if (tick%1000==0)
 		   {
 			   TRACE("test run\n");
 			   ybkclient->BuildXmlData_GetSvnTime(synctime,0);
+			     synctime.Empty();
+
+				  ybkclient->BuildXmlData_DataQuery(synctime,0,comcode);
+		   }
+		   if (tick%3000==0)
+		   {
+			   TRACE("holding run\n");
+			   synctime.Empty();
+			   ybkclient->BuildXmlData_Holding(synctime,0);
 		   }
 		   tick1=tick;
 	   }
@@ -406,13 +419,20 @@ void ThreadFunc(LPVOID lpParameter)
 				//sscanf_s((char *)msg.wParam,"%lld",&timea);
 				USES_CONVERSION;
 				sscanf_s((const char*)T2A(sSubStr),"%lld",&timea);
-			    if(ybkdlg->autosynctimediff==0)
-				ybkdlg->autosynctimediff=local_t-timea;
+				if(pfconnect->cm_check)
+				{
+					if(pfconnect->settimediff==0)
+						pfconnect->settimediff=local_t-timea;
+					else
+						pfconnect->settimediff=(local_t-timea)>pfconnect->settimediff?pfconnect->settimediff:(local_t-timea);
+				}
 				else
-                ybkdlg->autosynctimediff=(local_t-timea)>ybkdlg->autosynctimediff?ybkdlg->autosynctimediff:(local_t-timea);
+				{
+			    
+				}
 			//char timechuo[128];
 			//char startstr[]="<TV_U>";
-			TRACE("ss:%d,%d\n",ybkdlg->autosynctimediff,(local_t-timea));
+			TRACE("ss:%d,%d\n",pfconnect->settimediff,(local_t-timea));
 			//GetStrFromS1ToS2((char *)msg.wParam,startstr,"</TV_U>",timechuo);
 			//LONGLONG timea=0;
 			////sscanf_s((char *)msg.wParam,"%lld",&timea);
@@ -463,14 +483,12 @@ void ThreadFunc(LPVOID lpParameter)
 		{
 			YB_PARAM *yb=(YB_PARAM *)msg.wParam;
 			pfconnect->AddCommitList(*yb);
-			TRACE("1111111111111\n");
 		}
 		else if(msg.message == MESSAGE_SET_COMMIT_TIME)
 		{
-			time_t *settime=(time_t *)msg.wParam;
-			int isCommit=msg.lParam;
-			//pfconnect->AddCommitList(*yb);
-			TRACE("1111111111111\n");
+			COM_TIME *settime=(COM_TIME *)msg.wParam;
+			pfconnect->SetCommitTime(*settime);
+			TRACE("2222222222222222\n");
 		}
 		
 	}
@@ -568,13 +586,14 @@ void CybkDlg::OnBnClickedButtonStartCommit()
 	UINT m_hour=GetDlgItemInt(IDC_EDIT_OPENING_HOUR,NULL,FALSE);
 	UINT m_minute=GetDlgItemInt(IDC_EDIT_OPENING_MINUT,NULL,FALSE);
 	UINT m_second=GetDlgItemInt(IDC_EDIT_OPENING_SECOND,NULL,FALSE);
-	settimediff=GetDlgItemInt(IDC_EDIT_OPENING_MIL,NULL,TRUE);
-	LONGLONG timediff=67985;
-	TRACE("diff:%lld\n",timediff+settimediff);
-	//LONGLONG timediff=GetDlgItemInt(IDC_EDIT_OPENING_MIL,NULL,TRUE);
-	time_localcurrent=GetSetTimeForMe(m_day,m_hour,m_minute,m_second);
-	 PostThreadMessage(this->MainThreadID,MESSAGE_SET_COMMIT_TIME,(WPARAM )&time_localcurrent,TRUE);
-	 PostThreadMessage(this->MainThreadID,MESSAGE_SET_COMMIT_TIME_DIFF,(WPARAM )&settimediff,0);
+	COM_TIME s_comtime;
+	s_comtime.settimediff=GetDlgItemInt(IDC_EDIT_OPENING_MIL,NULL,TRUE);
+	//TRACE("diff:%lld\n",timediff+settimediff);
+	s_comtime.time_localcurrent=GetSetTimeForMe(m_day,m_hour,m_minute,m_second);
+	//BST_CHECKED 
+	s_comtime.com_check= IsDlgButtonChecked( IDC_CHECK_AUTO_TIME );
+	 PostThreadMessage(this->MainThreadID,MESSAGE_SET_COMMIT_TIME,(WPARAM )&s_comtime,0);
+
 
 	 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	int irow=m_BuySaleList.GetItemCount();//行数

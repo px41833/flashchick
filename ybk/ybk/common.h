@@ -16,6 +16,14 @@ typedef struct rect
 	CString yb_trop;//µøÍ£¼Û
 	CString yb_number;//¹»ÂòÊýÁ¿
 }YB_PARAM;
+
+typedef struct committime
+{
+	time_t time_localcurrent;
+	int settimediff;
+	int com_check;
+}COM_TIME;
+
 #define TALK_MESSAGE WM_USER+0x01
 #define MESSAGE_LOGON_SUCCESS  WM_USER+0x02
 #define MESSAGE_SYNC_TIME      WM_USER+0x03
