@@ -311,36 +311,37 @@ void ThreadFuncSyncCommit(LPVOID lpParameter)
 	 
 	  //time_t  tick_t=time();
 	  // Sleep(4*500);
-	    if (GetCurrMSForMe()>(ybkclient->time_localcurrent+ybkclient->settimediff))
+	    if ((GetCurrMSForMe()>(ybkclient->time_localcurrent+ybkclient->settimediff))&&(ybkclient->ListCommit))
 		{
 			if (ybkclient->GetCommitListLen()!=1)
 			{
 				TRACE("vector.....\n");
+				ybkclient->StartCommitList();
 			}
 		}
 	   tick=GetTickCount();
 	   if(tick!=tick1)
 	   { 
-		   if (tick%1000==0)
+		   if (tick%3000==0)
 		   {
 			   TRACE("test run\n");
 			   ybkclient->BuildXmlData_GetSvnTime(synctime,0);
 			     synctime.Empty();
 
-				  ybkclient->BuildXmlData_DataQuery(synctime,0,comcode);
+				 ybkclient->BuildXmlData_DataQuery(synctime,0,comcode);
 		   }
-		   if (tick%3000==0)
+		  /* if (tick%3000==0)
 		   {
 			   TRACE("holding run\n");
 			   synctime.Empty();
 			   ybkclient->BuildXmlData_Holding(synctime,0);
-		   }
+		   }*/
 		   tick1=tick;
 	   }
-	   
+	  
 		//ybkclient->RunTimeCommit();
    }
-   
+    TRACE("commit exit\n");
 }
 BOOL MByteToWChar(LPCSTR lpcszStr, LPWSTR lpwszStr, DWORD dwSize)
 {
@@ -375,6 +376,7 @@ void ThreadFunc(LPVOID lpParameter)
 	//2.登录获取返回码
 	CString logon_s;
 	pfconnect->BuildXmlData_Logon(logon_s,0);
+	pfconnect->BuildXmlData_CheckUser(logon_s,0);
 	MSG msg;
 	//while(1)
 	{
@@ -490,11 +492,21 @@ void ThreadFunc(LPVOID lpParameter)
 			pfconnect->SetCommitTime(*settime);
 			TRACE("2222222222222222\n");
 		}
+		else if(msg.message == MESSAGE_RE_LOGON)
+		{
+			TRACE("disconect~~~~~\n");
+			pfconnect->RunFlag=FALSE;
+			pfconnect->DisConnect();
+
+			Sleep(3*1000);
+			//1.init connect
+			pfconnect->Connect();
+			//2.登录获取返回码
+			pfconnect->BuildXmlData_Logon(logon_s,0);
+		}
 		
 	}
-	TRACE("2222222222222222\n");
 	}
-	TRACE("3333333333\n");
 	//3.创建同步服务器线程
 	//4.创建接收返回数据处理线程
 	//5.循环等待时间去提交定单

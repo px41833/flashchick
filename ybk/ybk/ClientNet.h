@@ -37,14 +37,16 @@ public:
 
 	int RecvMsg(char *msg,int len);
 	//¹Ø±Õ
-	void Close();
+	void DisConnect();
 
 	CString InitXmlData_Head();
 	CString BuildXmlData_Logon(CString s,int len);
+	CString BuildXmlData_CheckUser(CString s,int len);
 	CString BuildXmlData_GetSvnTime(CString s,int len);
 	CString BuildXmlData_GetFirmInfo(CString s,int len);
 	CString BuildXmlData_Holding(CString s,int len);   //Ë¢ÐÂ³Ö²Ö
 	CString BuildXmlData_DataQuery(CString s,int len,CString querycode);  
+	CString BuildXmlData_Commit(CString s,CString querycode,CString direct,CString price,CString num);  
 
 	int AddCommitList(YB_PARAM ybk);
 	int SetCommitTime(COM_TIME cmtime);

@@ -47,6 +47,10 @@ int ClientNet::Connect(int port,const char* address)
 	}
 	return TRUE;
 }
+void ClientNet::DisConnect()
+{
+	closesocket(m_sock);
+}
 void ThreadFuncRecv(LPVOID lpParameter)
 { 
     //int sock=(int)*((int *)lpParameter); 
@@ -60,6 +64,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
 	u_long ul=1;
 	ioctlsocket(client->m_sock,FIONBIO,&ul);    //用非阻塞的连接
 	FD_SET(client->m_sock,&fds); //添加描述符 
+	int s_tick_stats=0;
     while(client->RunFlag) 
    { 
         
@@ -119,6 +124,14 @@ void ThreadFuncRecv(LPVOID lpParameter)
 					else
 					{
 						TRACE("~~error code0x%x\n",WSAGetLastError());
+						s_tick_stats++;
+						if (s_tick_stats>10)
+						{
+							s_tick_stats=0;
+							//发送消息进行重新连接
+							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_RE_LOGON,NULL,0);
+							break;
+						}
 					}
 					
 				}
@@ -127,6 +140,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
         }
 	
      }//end while 
+	TRACE("client exit\n");
 }//end ThreadFuncRecv 
 
 int ClientNet::Connect(void)
@@ -150,7 +164,7 @@ int ClientNet::Connect(void)
 		return FALSE;
 	}
 	//成功后创建接收线程
-	
+	RunFlag=TRUE;
 	CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFuncRecv,this,0,&ClientThreadID);
 	return TRUE;
 }
@@ -180,10 +194,7 @@ int ClientNet::RecvMsg( char* msg,int len)
 	//AfxMessageBox(recvbuf);
 	return 0;
 }
-void ClientNet::Close()
-{
-	closesocket(m_sock);
-}
+
 CString ClientNet::InitXmlData_Head()
 {
 	CString xmlheadstr;
@@ -208,13 +219,30 @@ CString ClientNet::BuildXmlData_Logon(CString s,int len)
 	logonstr +=LoginAccout;
 	logonstr +="</USER_ID><PASSWORD>";
 	logonstr +=LoginPasswd;
-	logonstr +="</PASSWORD><REGISTER_WORD>201609252116332730180000000015458007.965574113085</REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>";
+	logonstr +="</PASSWORD><REGISTER_WORD>20161016140836820129990672724174.465741636654</REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>";
 	lenthstr.Format(_T("Content-Length:%d\r\n"),logonstr.GetLength());
 	lenthstr +="Connection: Keep-Alive\r\n\r\n";
 	s=XmlHead+lenthstr+logonstr;
 	USES_CONVERSION;
 	SendMsg((const char*)T2A(s),s.GetLength());
 	
+	return s;
+}
+CString ClientNet::BuildXmlData_CheckUser(CString s,int len)
+{
+	CString logonstr,lenthstr;
+	logonstr.Empty();
+	logonstr ="<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"check_user\"><USER_ID>";
+	logonstr +=LoginAccout;
+	logonstr +="</USER_ID><SESSION_ID>";
+	logonstr +=this->RetRandCode;
+	logonstr +="</SESSION_ID><MODULE_ID>18</MODULE_ID><F_LOGONTYPE></F_LOGONTYPE><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>";
+	lenthstr.Format(_T("Content-Length:%d\r\n"),logonstr.GetLength());
+	lenthstr +="Connection: Keep-Alive\r\n\r\n";
+	s=XmlHead+lenthstr+logonstr;
+	USES_CONVERSION;
+	SendMsg((const char*)T2A(s),s.GetLength());
+
 	return s;
 }
 CString ClientNet::BuildXmlData_GetSvnTime(CString s,int len)
@@ -287,6 +315,36 @@ CString ClientNet::BuildXmlData_DataQuery(CString s,int len,CString querycode)
 
 	return s;
 }
+CString ClientNet::BuildXmlData_Commit(CString s,CString querycode,CString direct,CString price,CString num)
+{
+	CString logonstr,lenthstr;
+	logonstr.Empty();
+	logonstr ="<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"order\"><USER_ID>";
+	logonstr +=LoginAccout;
+	logonstr +="</USER_ID><CUSTOMER_ID>";
+	logonstr +=LoginAccout;
+	logonstr +="00";
+	logonstr +="</CUSTOMER_ID><BUY_SELL>";
+	logonstr +=direct;
+	logonstr +="</BUY_SELL><COMMODITY_ID>";
+	logonstr +="99";
+	logonstr +=querycode;
+	logonstr +="</COMMODITY_ID><PRICE>";
+	logonstr +=price;
+	logonstr +="</PRICE><QTY>";
+	logonstr +=num;
+	logonstr +="</QTY><SETTLE_BASIS>1</SETTLE_BASIS><CLOSEMODE>0</CLOSEMODE><TIMEFLAG>0</TIMEFLAG><L_PRICE>0</L_PRICE><SESSION_ID>";
+
+	logonstr +=this->RetRandCode;
+	logonstr +="</SESSION_ID><BILLTYPE>0</BILLTYPE></REQ></GNNT>";
+	lenthstr.Format(_T("Content-Length:%d\r\n"),logonstr.GetLength());
+	lenthstr +="Connection: Keep-Alive\r\n\r\n";
+	s=XmlHead+lenthstr+logonstr;
+	USES_CONVERSION;
+	SendMsg((const char*)T2A(s),s.GetLength());
+	TRACE("commit:%s\n",( char*)T2A(s));
+	return s;
+}
 void ClientNet::RunTimeCommit(void)
 {
 	while(RunFlag)
@@ -312,7 +370,14 @@ int ClientNet::SetCommitTime(COM_TIME cmtime)
 }
 void ClientNet::StartCommitList(void)
 {
-
+	CString commit;
+	vector<YB_PARAM>::iterator it;
+	for(it=yb_vec.begin();it!=yb_vec.end();it++)
+	{
+		BuildXmlData_Commit(commit,it->yb_code,it->yb_sale,it->yb_price,it->yb_number);
+		TRACE("%s,%s,%s,%s,%d\n",it->yb_code,it->yb_price,it->yb_sale,it->yb_number,yb_vec.size());
+	}
+	ListCommit=FALSE;
 }
 int ClientNet::GetCommitListLen(void)
 {
