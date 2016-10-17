@@ -301,18 +301,21 @@ void ThreadFuncWatchDog(LPVOID lpParameter)
 {
 	ClientNet *ybkdog= (ClientNet *)lpParameter;
 	DWORD tick=0,tick1=0;
-	 tick=GetTickCount();
+	 
 	  while(1)
 	  {
+		  tick=GetTickCount();
 	   if(tick!=tick1)
 	   { 
 		   if (tick%100==0)
 		   {
-			  // TRACE("\n");
+			  TRACE("ybkdog->m_WatchDog£º%d\n",ybkdog->m_WatchDog);
 			   ybkdog->m_WatchDog++;
-			   if (ybkdog->m_WatchDog>10)
+			   if (ybkdog->m_WatchDog>30)
 			   {
 				   TRACE("watch dog ......\n");
+				   ybkdog->m_WatchDog=0;
+				  int ret=PostThreadMessage(ybkdog->MainWinThreadID,MESSAGE_RE_LOGON,NULL,0);
 			   }
 		   }
 		   
