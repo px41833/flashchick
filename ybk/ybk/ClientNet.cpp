@@ -20,6 +20,7 @@ ClientNet::ClientNet(CString accout,CString passwd ,CString ipaddr,CString port,
 	time_localcurrent=0;
 	settimediff=0;
 	cm_check=FALSE;
+	m_WatchDog=0;
 	yb_vec.clear();
 }
 
@@ -89,6 +90,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
 							memset(retcode, 0, sizeof(retcode));
 							memcpy(retcode,start+sizeof("<RETCODE>")-1,end-start-sizeof("<RETCODE>")+1);
 							client->RetRandCode=retcode;
+							client->m_WatchDog=0;//喂狗
 							/*PostThreadMessage(client->MainWinThreadID,MESSAGE_LOGON_SUCCESS,(WPARAM)retcode,0);*/
 							PostThreadMessage(client->MainWinThreadID,MESSAGE_LOGON_SUCCESS,(WPARAM)revstart,0);
 						}
@@ -103,6 +105,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
 							memset(retcode, 0, sizeof(retcode));
 							memcpy(retcode,start+sizeof("<TV_U>")-1,end-start-sizeof("<TV_U>")+1);
 							client->SvnMil=retcode;*/
+							client->m_WatchDog=0;//喂狗
 							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_SYNC_TIME,(WPARAM)revstart,0);
 							TRACE(" sync time ret:%d\n",ret);
 						}
@@ -117,6 +120,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
 							memset(retcode, 0, sizeof(retcode));
 							memcpy(retcode,start+sizeof("<TV_U>")-1,end-start-sizeof("<TV_U>")+1);
 							client->SvnMil=retcode;*/
+							client->m_WatchDog=0;//喂狗
 							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_FIRM_INFO,(WPARAM)revstart,0);
 							//TRACE(" sync time ret:%d\n",ret);
 						}
@@ -127,6 +131,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
 						s_tick_stats++;
 						if (s_tick_stats>10)
 						{
+							client->m_WatchDog=0;//喂狗
 							s_tick_stats=0;
 							//发送消息进行重新连接
 							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_RE_LOGON,NULL,0);
@@ -219,7 +224,7 @@ CString ClientNet::BuildXmlData_Logon(CString s,int len)
 	logonstr +=LoginAccout;
 	logonstr +="</USER_ID><PASSWORD>";
 	logonstr +=LoginPasswd;
-	logonstr +="</PASSWORD><REGISTER_WORD>20161016140836820129990672724174.465741636654</REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>";
+	logonstr +="</PASSWORD><REGISTER_WORD>20161017145113403129990672748216.16447345315</REGISTER_WORD><VERSIONINFO></VERSIONINFO><LOGONTYPE>pc</LOGONTYPE></REQ></GNNT>";
 	lenthstr.Format(_T("Content-Length:%d\r\n"),logonstr.GetLength());
 	lenthstr +="Connection: Keep-Alive\r\n\r\n";
 	s=XmlHead+lenthstr+logonstr;

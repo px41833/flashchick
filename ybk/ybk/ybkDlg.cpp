@@ -297,6 +297,30 @@ HCURSOR CybkDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
+void ThreadFuncWatchDog(LPVOID lpParameter)
+{
+	ClientNet *ybkdog= (ClientNet *)lpParameter;
+	DWORD tick=0,tick1=0;
+	 tick=GetTickCount();
+	  while(1)
+	  {
+	   if(tick!=tick1)
+	   { 
+		   if (tick%100==0)
+		   {
+			  // TRACE("\n");
+			   ybkdog->m_WatchDog++;
+			   if (ybkdog->m_WatchDog>10)
+			   {
+				   TRACE("watch dog ......\n");
+			   }
+		   }
+		   
+		   tick1=tick;
+	   }
+	  }
+
+}
 void ThreadFuncSyncCommit(LPVOID lpParameter)
 {
    ClientNet *ybkclient= (ClientNet *)lpParameter;
@@ -370,7 +394,8 @@ void ThreadFunc(LPVOID lpParameter)
 	ybkdlg->GetDlgItemText(IDC_EDIT_ACCOUT,paccout);
 	ybkdlg->GetDlgItemText(IDC_EDIT_PASSWD,ppasswd);
 	ClientNet *pfconnect=new ClientNet(paccout,ppasswd,ExchangePara[0][0],ExchangePara[0][1],ybkdlg->MainThreadID);
-	
+	//运行看门狗
+	CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFuncWatchDog,pfconnect,0,NULL);
 	//1.init connect
 	pfconnect->Connect();
 	//2.登录获取返回码
