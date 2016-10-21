@@ -47,6 +47,7 @@ public:
 	CString BuildXmlData_GetFirmInfo(CString s,int len);
 	CString BuildXmlData_Holding(CString s,int len);   //Ë¢ÐÂ³Ö²Ö
 	CString BuildXmlData_DataQuery(CString s,int len,CString querycode);  
+	CString BuildXmlData_WeekOrder(CString s,int len,CString querycode);
 	CString BuildXmlData_Commit(CString s,CString querycode,CString direct,CString price,CString num);  
 
 	int AddCommitList(YB_PARAM ybk);

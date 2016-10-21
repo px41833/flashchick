@@ -1,6 +1,21 @@
 POST /issue_tradeweb/httpXmlServlet HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Host: 123.59.182.100:16915
+Content-Length: 308
+Expect: 100-continue
+
+HTTP/1.1 100 Continue
+
+<?xml version="1.0" encoding="gb2312"?><GNNT><REQ name="my_weekorder_query"><USER_ID>1299906727</USER_ID><BUY_SELL>0</BUY_SELL><ORDER_NO>0</ORDER_NO><COMMODITY_ID></COMMODITY_ID><STARTNUM>0</STARTNUM><RECCNT>0</RECCNT><UT>0</UT><SESSION_ID>7102734190640642560</SESSION_ID><MARKET_ID></MARKET_ID></REQ></GNNT>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/xml;charset=GBK
+Content-Length: 180
+Date: Thu, 20 Oct 2016 14:52:31 GMT
+
+<?xml version="1.0" encoding="GBK"?><GNNT><REP name="my_weekorder_query"><RESULT><RETCODE>0</RETCODE><MESSAGE>..........</MESSAGE><TTLREC>0</TTLREC><UT>0</UT></RESULT></REP></GNNT>
+POST /issue_tradeweb/httpXmlServlet HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: 123.59.182.100:16915
 Content-Length: 263
 Expect: 100-continue
 Connection: Keep-Alive

@@ -320,6 +320,23 @@ CString ClientNet::BuildXmlData_DataQuery(CString s,int len,CString querycode)
 
 	return s;
 }
+CString ClientNet::BuildXmlData_WeekOrder(CString s,int len,CString querycode)
+{
+	CString logonstr,lenthstr;
+	logonstr.Empty();
+	logonstr ="<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"my_weekorder_query\"><USER_ID>";
+	logonstr +=LoginAccout;
+	logonstr +="</USER_ID><BUY_SELL>0</BUY_SELL><ORDER_NO>0</ORDER_NO><COMMODITY_ID></COMMODITY_ID><STARTNUM>0</STARTNUM><RECCNT>0</RECCNT><UT>0</UT><SESSION_ID>";
+	logonstr +=this->RetRandCode;
+	logonstr +="</SESSION_ID><MARKET_ID></MARKET_ID></REQ></GNNT>";
+	lenthstr.Format(_T("Content-Length:%d\r\n"),logonstr.GetLength());
+	lenthstr +="Connection: Keep-Alive\r\n\r\n";
+	s=XmlHead+lenthstr+logonstr;
+	USES_CONVERSION;
+	SendMsg((const char*)T2A(s),s.GetLength());
+
+	return s;
+}
 CString ClientNet::BuildXmlData_Commit(CString s,CString querycode,CString direct,CString price,CString num)
 {
 	CString logonstr,lenthstr;
@@ -382,6 +399,7 @@ void ClientNet::StartCommitList(void)
 		BuildXmlData_Commit(commit,it->yb_code,it->yb_sale,it->yb_price,it->yb_number);
 		TRACE("%s,%s,%s,%s,%d\n",it->yb_code,it->yb_price,it->yb_sale,it->yb_number,yb_vec.size());
 	}
+	BuildXmlData_WeekOrder(commit,0,0);
 	ListCommit=FALSE;
 }
 int ClientNet::GetCommitListLen(void)
