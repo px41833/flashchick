@@ -99,6 +99,17 @@ memcpy(out,start+sizeof(start_s)-1,end-start-sizeof(start_s)+1);
 	
 	 return sSubStr;
  }
+ CString GetStrFromS1ToS2Ex2(const char *s,CString start_s,CString end_s,int start,int *end)
+ {
+
+	 CString localstr(s);
+	 int StartPos = localstr.Find(start_s,start);
+	 int EndPos = localstr.Find(end_s);
+	 //CString findstr=_T("<FN>");
+	 CString sSubStr = localstr.Mid(StartPos+start_s.GetLength(),EndPos-StartPos-start_s.GetLength());
+	 *end=EndPos;
+	 return sSubStr;
+ }
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
 class CAboutDlg : public CDialogEx
@@ -437,7 +448,7 @@ void ThreadFunc(LPVOID lpParameter)
 		else if(msg.message == MESSAGE_SYNC_TIME)
 		{
 			//同步时间，刷新控件
-			TRACE("message time:%s\n",(char *)msg.wParam);
+			//TRACE("message time:%s\n",(char *)msg.wParam);
 			char *procstr=(char *)msg.wParam;
 			CString sSubStr =GetStrFromS1ToS2Ex(procstr,_T("<RETCODE>"),_T("</RETCODE>"));
 			if (_ttoi(sSubStr)>=0)
@@ -519,6 +530,31 @@ void ThreadFunc(LPVOID lpParameter)
 			COM_TIME *settime=(COM_TIME *)msg.wParam;
 			pfconnect->SetCommitTime(*settime);
 			TRACE("2222222222222222\n");
+		}
+		else if(msg.message == MESSAGE_WEEK_ORDER)
+		{
+			//TRACE("\n\nMESSAGE_WEEK_ORDER:%s\n\n\n",(char *)msg.wParam);
+			char *procstr=(char *)msg.wParam;
+			CString order_ret =GetStrFromS1ToS2Ex(procstr,_T("<RETCODE>"),_T("</RETCODE>"));
+			CString num_ret =GetStrFromS1ToS2Ex(procstr,_T("<TTLREC>"),_T("</TTLREC>"));
+			TRACE("recode:%d,num:%d\n",_ttoi(order_ret),_ttoi(num_ret));
+			if ((_ttoi(order_ret)==0)&&(_ttoi(num_ret)>0))
+			{
+				CString procorder(procstr);
+				int findpos=0;
+				//for (int i=0;i<_ttoi(num_ret);i++)
+				for (int i=0;i<(int)pfconnect->yb_vec.size();i++)
+				{
+					//GetStrFromS1ToS2Ex2(procstr,_T("<RETCODE>"),_T("</RETCODE>"));
+					findpos=procorder.Find(pfconnect->yb_vec.at(i).yb_code);
+					if (findpos>0)
+					{
+						pfconnect->yb_vec.erase(pfconnect->yb_vec.begin()+i);
+						TRACE("提交成功,需要写消息区:%d",pfconnect->yb_vec.size());
+					}
+					
+				}
+			}
 		}
 		else if(msg.message == MESSAGE_RE_LOGON)
 		{

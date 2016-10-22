@@ -32,5 +32,6 @@ typedef struct committime
 #define MESSAGE_SET_COMMIT_TIME      WM_USER+0x06  //用户设置的定单提交时间
 #define MESSAGE_SET_COMMIT_TIME_DIFF      WM_USER+0x07  //用户设置的定单提交误差时间
 #define MESSAGE_RE_LOGON      WM_USER+0x08
+#define MESSAGE_WEEK_ORDER      WM_USER+0x09
 
 #endif

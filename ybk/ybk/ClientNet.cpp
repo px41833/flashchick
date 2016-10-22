@@ -58,8 +58,8 @@ void ThreadFuncRecv(LPVOID lpParameter)
 	ClientNet *client= (ClientNet *)lpParameter;
     struct fd_set fds; 
     struct timeval timeout={3,0}; //select等待3秒，3秒轮询，要非阻塞就置0 
-    char buffer[1024]={0}; //256字节的接收缓冲区 
-	int ret,revlen=0; // return val 
+    char buffer[1024*4]={0}; //256字节的接收缓冲区 
+	int ret,revlen=0,role=0; // return val 
 	char *revstart;
 	FD_ZERO(&fds); //每次循环都要清空集合，否则不能检测描述符变化 
 	u_long ul=1;
@@ -78,7 +78,11 @@ void ThreadFuncRecv(LPVOID lpParameter)
 			{
 				if  ( fds.fd_array[ i]== client->m_sock) 
 				{
-					revlen=recv(client->m_sock,buffer,1024,0);//接受网络数据 
+					
+						revlen =recv(client->m_sock,&buffer[revlen],1024,0);//接受网络数据 
+						TRACE("revlen:%d\n",revlen);
+						
+				
 					TRACE("buffer:%s\n",buffer);
 					if(revlen>0)
 					{
@@ -98,7 +102,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
 						{
 							//TRACE("select sync time\n");
 							//recv(client->m_sock,buffer,1024,0);//接受网络数据 
-							TRACE(" sync time:%s\n",buffer);
+							//TRACE(" sync time:%s\n",buffer);
 							/*char *start=strstr(buffer,"<TV_U>");
 							char *end=strstr(buffer,"</TV_U>");
 							char retcode[64];
@@ -107,7 +111,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
 							client->SvnMil=retcode;*/
 							client->m_WatchDog=0;//喂狗
 							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_SYNC_TIME,(WPARAM)revstart,0);
-							TRACE(" sync time ret:%d\n",ret);
+							//TRACE(" sync time ret:%d\n",ret);
 						}
 						else if (revstart=strstr(buffer,"<REP name=\"firm_info\">"))
 						{
@@ -123,6 +127,17 @@ void ThreadFuncRecv(LPVOID lpParameter)
 							client->m_WatchDog=0;//喂狗
 							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_FIRM_INFO,(WPARAM)revstart,0);
 							//TRACE(" sync time ret:%d\n",ret);
+						}
+						else if (revstart=strstr(buffer,"<REP name=\"my_weekorder_query\">"))
+						{
+							revlen +=recv(client->m_sock,&buffer[revlen],1024,0);//接受网络数据 
+							//TRACE(" \n\nmy_weekorder_query:%s\n\n\n",buffer);
+							
+							
+							client->m_WatchDog=0;//喂狗
+							TRACE("revlen77:%d\n\n",revlen);
+							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_WEEK_ORDER,(WPARAM)revstart,0);
+							
 						}
 					}
 					else
