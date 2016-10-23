@@ -58,32 +58,104 @@ void ThreadFuncRecv(LPVOID lpParameter)
 	ClientNet *client= (ClientNet *)lpParameter;
     struct fd_set fds; 
     struct timeval timeout={3,0}; //select等待3秒，3秒轮询，要非阻塞就置0 
-    char buffer[1024*4]={0}; //256字节的接收缓冲区 
-	int ret,revlen=0,role=0; // return val 
+    char *buffer=new char[140*1024];//={0}; //256字节的接收缓冲区 buffer[14*1024]={0};//真他妈大刚开始没算好
+	char bufferex[1024]={0};
+	int ret,revlen=0,role=0,recv_ret=0; // return val 
 	char *revstart;
 	FD_ZERO(&fds); //每次循环都要清空集合，否则不能检测描述符变化 
 	u_long ul=1;
-	ioctlsocket(client->m_sock,FIONBIO,&ul);    //用非阻塞的连接
+	//ioctlsocket(client->m_sock,FIONBIO,&ul);    //用非阻塞的连接,没什么用，光捣乱
 	FD_SET(client->m_sock,&fds); //添加描述符 
 	int s_tick_stats=0;
     while(client->RunFlag) 
    { 
         
-        //maxfdp=sock>fp?sock+1:fp+1;    //描述符最大值加1 
         ret=(select(NULL,&fds,NULL,NULL,&timeout));   //select使用 
         if(ret>0)
         {
-			memset(buffer,0,sizeof(buffer));
+			//if(role==0)
+			{
+			revlen=0;
+			recv_ret=0;
+			 memset(buffer,0,sizeof(buffer));
+			 memset(bufferex,0,sizeof(bufferex));
+			}
+
 			for  ( int i=0;i<(int)fds.fd_count;i++) 
 			{
+				//if(FD_ISSET(client->m_sock,&fds);
 				if  ( fds.fd_array[ i]== client->m_sock) 
 				{
 					
-						revlen =recv(client->m_sock,&buffer[revlen],1024,0);//接受网络数据 
-						TRACE("revlen:%d\n",revlen);
-						
+						recv_ret=recv(client->m_sock,buffer,1024,0);//接受网络数据 
+						//revlen =recv(client->m_sock,&buffer[0],1024,0);
+
+						/*if (strstr(buffer,"commodity_query")>0)
+						{
+							TRACE("%s\n",buffer);
+							while(recv(client->m_sock,&buffer[0],1024,0))
+							{
+								TRACE("%s\n",buffer);
+								TRACE("~~error code0x%x\n",WSAGetLastError());
+								 memset(buffer,0,sizeof(buffer));
+							}
+							
+						}*/
+						if (recv_ret!=SOCKET_ERROR)
+						{
+							revlen=recv_ret;
+						}
+						if (recv_ret==1024)
+						{   
+							TRACE("%s\n",buffer);
+							while(recv_ret=recv(client->m_sock,&buffer[revlen],1024,0))
+							{
+								/*if (0==strncmp(&buffer[revlen-1024],&buffer[0],102))
+								{
+									TRACE("=============\n");
+								}
+								else*/
+								//strcpy(&buffer[revlen],bufferex);
+								TRACE("buffer[revlen]:%s\n\n",&buffer[revlen]);
+								revlen+=recv_ret;
+								
+								TRACE("\n\nrevlen:%d,recv_ret:%d\n\n",revlen,recv_ret);
+								
+								//TRACE("\n\n 0x%x,0x%x\n\n",buffer[revlen],buffer[revlen+1]);
+								//TRACE("%s\n",bufferex);
+								 memset(bufferex,0,sizeof(bufferex));
+								if (strstr(buffer,"</GNNT>")>0)
+								break;
+								
+							}
+							
+							
+
+						}
+						TRACE("\n\n\nrevlen:%d\n\n\n",revlen);
+						/*TRACE("recv_ret:%d\n",recv_ret);
+						if (recv_ret==SOCKET_ERROR )
+						{
+							recv_ret=0;
+							continue;
+						}
+						else
+						{
+							revlen+=recv_ret;
+						}*/
+						/*if (strstr(buffer,"</GNNT>")>0)
+						{
+							role=0;
+							TRACE("role is not\n");
+						}
+						else
+						{
+							role=1;
+							TRACE("role is OK:%s\n",buffer);
+							continue;
+						}
 				
-					TRACE("buffer:%s\n",buffer);
+					TRACE("buffer:%s\n",buffer);*/
 					if(revlen>0)
 					{
 						if (revstart=strstr(buffer,"<REP name=\"logon\">"))
@@ -111,7 +183,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
 							client->SvnMil=retcode;*/
 							client->m_WatchDog=0;//喂狗
 							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_SYNC_TIME,(WPARAM)revstart,0);
-							//TRACE(" sync time ret:%d\n",ret);
+							TRACE(" sync time ret:%d\n",ret);
 						}
 						else if (revstart=strstr(buffer,"<REP name=\"firm_info\">"))
 						{
@@ -126,7 +198,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
 							client->SvnMil=retcode;*/
 							client->m_WatchDog=0;//喂狗
 							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_FIRM_INFO,(WPARAM)revstart,0);
-							//TRACE(" sync time ret:%d\n",ret);
+							
 						}
 						else if (revstart=strstr(buffer,"<REP name=\"my_weekorder_query\">"))
 						{
@@ -138,6 +210,17 @@ void ThreadFuncRecv(LPVOID lpParameter)
 							TRACE("revlen77:%d\n\n",revlen);
 							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_WEEK_ORDER,(WPARAM)revstart,0);
 							
+						}
+						else if (revstart=strstr(buffer,"<REP name=\"my_weekorder_query\">"))
+						{
+							revlen +=recv(client->m_sock,&buffer[revlen],1024,0);//接受网络数据 
+							//TRACE(" \n\nmy_weekorder_query:%s\n\n\n",buffer);
+
+
+							client->m_WatchDog=0;//喂狗
+							TRACE("revlen77:%d\n\n",revlen);
+							int ret=PostThreadMessage(client->MainWinThreadID,MESSAGE_WEEK_ORDER,(WPARAM)revstart,0);
+
 						}
 					}
 					else
@@ -160,6 +243,7 @@ void ThreadFuncRecv(LPVOID lpParameter)
         }
 	
      }//end while 
+	delete buffer;
 	TRACE("client exit\n");
 }//end ThreadFuncRecv 
 
@@ -332,7 +416,26 @@ CString ClientNet::BuildXmlData_DataQuery(CString s,int len,CString querycode)
 	s=XmlHead+lenthstr+logonstr;
 	USES_CONVERSION;
 	SendMsg((const char*)T2A(s),s.GetLength());
-
+	//TRACE("%s\n",( char*)T2A(s));
+	return s;
+}
+CString ClientNet::BuildXmlData_Query(CString s,int len)
+{
+	CString logonstr,lenthstr;
+	logonstr.Empty();
+	logonstr ="<?xml version=\"1.0\" encoding=\"gb2312\"?><GNNT><REQ name=\"commodity_query\"><USER_ID>";
+	logonstr +=LoginAccout;
+	logonstr +="</USER_ID><COMMODITY_ID>";
+	//logonstr +=querycode;
+	logonstr +="</COMMODITY_ID><SESSION_ID>";
+	logonstr +=this->RetRandCode;
+	logonstr +="</SESSION_ID></REQ></GNNT>";
+	lenthstr.Format(_T("Content-Length:%d\r\n"),logonstr.GetLength());
+	lenthstr +="Connection: Keep-Alive\r\n\r\n";
+	s=XmlHead+lenthstr+logonstr;
+	USES_CONVERSION;
+	SendMsg((const char*)T2A(s),s.GetLength());
+	TRACE("%s\n",( char*)T2A(s));
 	return s;
 }
 CString ClientNet::BuildXmlData_WeekOrder(CString s,int len,CString querycode)

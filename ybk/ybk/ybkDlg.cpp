@@ -339,7 +339,8 @@ void ThreadFuncSyncCommit(LPVOID lpParameter)
 {
    ClientNet *ybkclient= (ClientNet *)lpParameter;
    CString logon_s;
-   ybkclient->BuildXmlData_GetFirmInfo(logon_s,0);
+   //ybkclient->BuildXmlData_GetFirmInfo(logon_s,0);
+   ybkclient->BuildXmlData_Query(logon_s,0);
    DWORD tick=0,tick1=0;
    time_t tick_t=0;
    CString synctime;
@@ -366,7 +367,7 @@ void ThreadFuncSyncCommit(LPVOID lpParameter)
 			   ybkclient->BuildXmlData_GetSvnTime(synctime,0);
 			     synctime.Empty();
 
-				 ybkclient->BuildXmlData_DataQuery(synctime,0,comcode);
+				// ybkclient->BuildXmlData_DataQuery(synctime,0,comcode);
 		   }
 		  /* if (tick%3000==0)
 		   {
@@ -415,7 +416,7 @@ void ThreadFunc(LPVOID lpParameter)
 	//2.µÇÂ¼»ñÈ¡·µ»ØÂë
 	CString logon_s;
 	pfconnect->BuildXmlData_Logon(logon_s,0);
-	pfconnect->BuildXmlData_CheckUser(logon_s,0);
+	//pfconnect->BuildXmlData_CheckUser(logon_s,0);
 	MSG msg;
 	//while(1)
 	{
@@ -430,6 +431,8 @@ void ThreadFunc(LPVOID lpParameter)
 			CString sSubStr =GetStrFromS1ToS2Ex(procstr,_T("<RETCODE>"),_T("</RETCODE>"));
 			if (_ttoi(sSubStr)>=0)
 			{
+				pfconnect->BuildXmlData_GetFirmInfo(logon_s,0);
+				Sleep(2*1000);
 				CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)ThreadFuncSyncCommit,pfconnect,0,NULL);
 			}
 			else
@@ -442,7 +445,7 @@ void ThreadFunc(LPVOID lpParameter)
 				break;
 				
 			}
-			
+			//pfconnect->BuildXmlData_Query(logon_s,0);
 			//pfconnect->RunTimeCommit();
 		}
 		else if(msg.message == MESSAGE_SYNC_TIME)
@@ -504,7 +507,7 @@ void ThreadFunc(LPVOID lpParameter)
 		}
 		else if(msg.message == MESSAGE_FIRM_INFO)
 		{
-			TRACE("MESSAGE_FIRM_INFO:%s\n",(char *)msg.wParam);
+			//TRACE("MESSAGE_FIRM_INFO:%s\n",(char *)msg.wParam);
 			char *procstr=(char *)msg.wParam;
 			//char outstr[5];
 			

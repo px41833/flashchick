@@ -29,6 +29,7 @@ public:
 	BOOL ListCommit; //表单是否提交过的标志
 	int cm_check;//是否选择自动算时间差值
 	int m_WatchDog;//看门狗
+	int m_ReqAll;//请求过所有数据
 
 public:
 	int Connect(int port,const char* address);
@@ -47,6 +48,7 @@ public:
 	CString BuildXmlData_GetFirmInfo(CString s,int len);
 	CString BuildXmlData_Holding(CString s,int len);   //刷新持仓
 	CString BuildXmlData_DataQuery(CString s,int len,CString querycode);  
+	CString BuildXmlData_Query(CString s,int len); 
 	CString BuildXmlData_WeekOrder(CString s,int len,CString querycode);
 	CString BuildXmlData_Commit(CString s,CString querycode,CString direct,CString price,CString num);  
 
